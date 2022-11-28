@@ -7,7 +7,7 @@ function Home(props) {
     console.log(props.users)
 
     return(
-        <div className="container-fluid">
+        <div className="container-fluid home-cont">
             <div className="row">
                 <h4>Welcome back {props.users.first_name}!</h4>
                 <h6>It's {date}</h6>

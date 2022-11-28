@@ -16,8 +16,6 @@ function Navbar(props) {
 
     document.getElementById(id).classList.add('active')
 
-    console.log('here')
-
   }
 
   return(
