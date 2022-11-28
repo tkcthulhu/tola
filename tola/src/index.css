@@ -5,9 +5,43 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: grey;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.header-cont {
+  padding-top: 10px;
+  padding-left: 8px;
+  margin-bottom: 3vh;
+}
+
+.user-icon {
+  padding-left: 6px !important
+}
+
+.user-icon-png {
+  height: 10vw;
+  width: 10vw;
+}
+
+.tola-logo-header {
+  padding: 0 !important;
+}
+
+#username-header {
+  font-size: small;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#gym-name-header {
+  font-size: x-small;
+}
+
+.header-text {
+  padding-right: 6px !important
 }
