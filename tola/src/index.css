@@ -59,3 +59,7 @@ code {
   width: 13vw;
   padding: .5vw !important
 }
+
+.tab {
+  margin-left: 20px;
+}
