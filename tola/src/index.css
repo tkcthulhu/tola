@@ -12,6 +12,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.name {
+  width: fit-content
+}
 
 .header-cont {
   padding-top: 10px;
@@ -20,7 +23,9 @@ code {
 }
 
 .user-icon {
-  padding-left: 6px !important
+  padding: 0 !important;
+  padding-left: 6px !important;
+  padding-right: 12px !important
 }
 
 .user-icon-png {
@@ -43,5 +48,14 @@ code {
 }
 
 .header-text {
-  padding-right: 6px !important
+  padding-right: 0px !important
+}
+
+.date-row {
+  padding: 8px
+}
+
+.checkbox {
+  width: 13vw;
+  padding: .5vw !important
 }

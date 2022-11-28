@@ -5,11 +5,10 @@ import Navbar from './Navbar';
 import Header from './Header';
 
 function AppInfo() {
- 
-  const [page, setPage] = useState('Home');
+
   const [users, setUsers] = useState([])
 
-  let id = 3
+  let id = 5
   
   useEffect(() => {
     axios.get(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/usersAPI/${id}`)
@@ -19,7 +18,7 @@ function AppInfo() {
   return (
     <>
       <Header users={users}/>
-      <Navbar/>
+      <Navbar users={users}/>
     </>
   )
 }
