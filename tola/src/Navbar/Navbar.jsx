@@ -15,7 +15,9 @@ function Navbar(props) {
     const tabs = ['Home', 'Training', 'Maxes', 'Programs']
 
     for (const tab of tabs) {
+
       document.getElementById(tab).classList.remove('active')
+
     }
 
     document.getElementById(id).classList.add('active')
@@ -79,7 +81,7 @@ function Navbar(props) {
       <div className="container" id='main-pages'>
         { page === 'Home' && <Home users={props.users} />}
         { page === 'Training' && <Training />}
-        { page === 'Maxes' && <Maxes users={props.users} />}
+        { page === 'Maxes' && <Maxes users={props.users} show={props.show} setShow={props.setShow}/>}
         { page === 'Programs' && <Programs />}
       </div>
     </>

@@ -5,8 +5,6 @@ function Home(props) {
 
     let date = new Date().toDateString();
 
-    console.log(props.users)
-
     return(
         <ul className="list-group list-group-flush">
             <li className="list-group-item">

@@ -7,28 +7,28 @@ import Header from './Header/Header';
 import Profile from './Profile/Profile';
 import Settings from './Settings/Settings';
 
+
 function AppInfo() {
 
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
   const [page, setPage] = useState('Home');
-  const [units, setUnits] = useState([])
+  const [show, setShow] = useState(false);
+  const [maxes, setMaxes] = useState([])
+  const [units, setUnits] = useState([]);
 
-  let id = 4
+  let id = 5
   
   useEffect(() => {
     axios.get(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/usersAPI/${id}`)
     .then((resp) => setUsers(resp.data));
-  }, [])
+  }, [page, show])
 
   return (
     <>
       <Header users={users} page={page} setPage={setPage}/>
       { page === 'Profile' && <Profile users={users} />}
       { page === 'Settings' && <Settings users={users} />}
-      { page === 'Home' && <Navbar users={users} page={page} setPage={setPage}/>}
-      { page === 'Training' && <Navbar users={users} page={page} setPage={setPage}/>}
-      { page === 'Maxes' && <Navbar users={users} page={page} setPage={setPage}/>}
-      { page === 'Programs' && <Navbar users={users} page={page} setPage={setPage}/>}
+      { ['Home', 'Training', 'Maxes', 'Programs'].includes(page) && <Navbar users={users} page={page} setPage={setPage} show={show} setShow={setShow}/>}
       <img 
         src={settings_button} 
         alt="settings" 
