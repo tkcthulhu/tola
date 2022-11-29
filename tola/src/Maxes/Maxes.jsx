@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import update from '../img/update-button.png'
-import NewMax from './NewMax'
-import NewModal from '../NewModal/NewModal'
+import UpdateMax from '../Modals/UpdateMax'
+import NewMax from '../Modals/NewMax'
 
 function Maxes(props) {
 
@@ -42,7 +42,6 @@ function Maxes(props) {
                                 setExerciseId(max.exercise_id)
                                 setOldMax(max.id)
                                 handleShow()
-                                console.log(max.id)
                             }}
                         />
                     </div>
@@ -53,10 +52,12 @@ function Maxes(props) {
     
     return (
         <>
+            <button onClick={() => {props.setShowNewMax(true)}}>This</button>
             <ul className="list-group list-group-flush">
                 {max_view}
             </ul>
-        <NewModal show={props.show} setShow={props.setShow} title={exercise} exerciseId={exerciseId} user={props.users.id} oldMax={oldMax}/>
+        <NewMax show={props.showNewMax} setShow={props.setShowNewMax} user={props.users.id}/>
+        <UpdateMax show={props.show} setShow={props.setShow} title={exercise} exerciseId={exerciseId} user={props.users.id} oldMax={oldMax}/>
         </>
     )
 }

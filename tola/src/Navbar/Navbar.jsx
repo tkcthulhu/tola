@@ -81,7 +81,7 @@ function Navbar(props) {
       <div className="container" id='main-pages'>
         { page === 'Home' && <Home users={props.users} />}
         { page === 'Training' && <Training />}
-        { page === 'Maxes' && <Maxes users={props.users} show={props.show} setShow={props.setShow}/>}
+        { page === 'Maxes' && <Maxes users={props.users} show={props.show} setShow={props.setShow} showNewMax={props.showNewMax} setShowNewMax={props.setShowNewMax}/>}
         { page === 'Programs' && <Programs />}
       </div>
     </>

@@ -4,7 +4,7 @@ import axios from "axios";
 import displayOutput from 'axios';
 import React from 'react';
 
-function NewModal(props) {
+function UpdateMax(props) {
 
   const weight = React.useRef(null);
 
@@ -56,9 +56,6 @@ function NewModal(props) {
           />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
           <Button 
             variant="danger"
             onClick={() => {
@@ -75,4 +72,4 @@ function NewModal(props) {
   );
 }
 
-export default NewModal
+export default UpdateMax
