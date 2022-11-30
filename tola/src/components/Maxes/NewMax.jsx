@@ -32,7 +32,7 @@ function NewMax(props) {
           "active": true
       })
 
-      .then((response) => displayOutput(response))
+      // .then((response) => displayOutput(response))
       .catch((err) => console.log(err));
 
     }
@@ -50,13 +50,12 @@ function NewMax(props) {
       for (const exercise of exercises) {
             if (!maxes.includes(exercise.name)) {
               exerciseLists.push(
-                <>
-                    <option 
-                        value= {exercise.id}
-                    >
-                        {exercise.name}
-                    </option>
-                </>
+                  <option 
+                      value= {exercise.id}
+                      key= {exercise.id}
+                  >
+                      {exercise.name}
+                  </option>
               )
             }
       }

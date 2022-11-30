@@ -8,9 +8,9 @@ function UpdateMax(props) {
 
   const weight = React.useRef(null);
 
-  function postMax(user, exercise, weight, reps) {
+  async function postMax(user, exercise, weight, reps) {
 
-    axios.post(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/maxAPI/`, {
+    await axios.post(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/maxAPI/`, {
         "user": user,
         "exercise": exercise,
         "weight": weight,

@@ -15,7 +15,8 @@ function App() {
   const [users, setUsers] = useState([]);
   const [show, setShow] = useState(false);
   const [showNewMax, setShowNewMax] = useState(false)
-  const [units, setUnits] = useState([]);
+  const [units, setUnits] = useState('pounds');
+
   let id = 2
 
   useEffect(() => {
@@ -23,20 +24,18 @@ function App() {
       .then((resp) => setUsers(resp.data));
   }, [show])
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Header users={users} />}>
-            <Route path="" element={<Home />} />
-            <Route path="training" element={<Training />} />
-            <Route path="maxes" element={<Maxes users={users} show={show} setShow={setShow} showNewMax={showNewMax} setShowNewMax={setShowNewMax} />} />
-            <Route path="programs" element={<Programs />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="settings" element={<Settings />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Header users={users} />}>
+          <Route path="" element={<Home />} />
+          <Route path="training" element={<Training />} />
+          <Route path="maxes" element={<Maxes users={users} show={show} setShow={setShow} showNewMax={showNewMax} setShowNewMax={setShowNewMax} />} />
+          <Route path="programs" element={<Programs />} />
+          <Route path="profile" element={<Profile users={users}/>} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

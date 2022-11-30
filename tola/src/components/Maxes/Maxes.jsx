@@ -4,6 +4,7 @@ import UpdateMax from './UpdateMax'
 import NewMax from './NewMax'
 import Button from 'react-bootstrap/esm/Button'
 import './maxes.css'
+import Layout from '../Layout'
 
 function Maxes(props) {
 
@@ -11,7 +12,7 @@ function Maxes(props) {
     const [exerciseId, setExerciseId] = useState('')
     const [oldMax, setOldMax] = useState('')
 
-    let maxes = [...props.users.maxes]
+    let maxes = props.users.maxes ? [...props.users.maxes] : []
 
     maxes = maxes.sort((a, b) => {
         if (a.exercise < b.exercise)
@@ -30,7 +31,7 @@ function Maxes(props) {
     for (const max of maxes) {
 
         max_view.push(
-            <li className="list-group-item">
+            <li key={max.id} className="list-group-item">
                 <div className="row">
                     <div className="col">
                         {max.exercise}
@@ -59,7 +60,7 @@ function Maxes(props) {
     }
 
     return (
-        <>
+        <Layout>
             <ul className="list-group list-group-flush">
                 {max_view}
             </ul>
@@ -72,7 +73,7 @@ function Maxes(props) {
             >
                 Set a New Max
             </Button>
-        </>
+        </Layout>
     )
 }
 
