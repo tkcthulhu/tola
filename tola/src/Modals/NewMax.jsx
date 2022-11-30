@@ -21,41 +21,47 @@ function NewMax(props) {
         props.setShow(false)
     };
 
-    console.log(exercises)
-
     function postMax(user, exercise, weight, reps) {
 
-        axios.post(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/maxAPI/`, {
-            "user": user,
-            "exercise": exercise,
-            "weight": weight,
-            "num_of_reps": reps,
-            "active": true
-        })
-        .then((response) => displayOutput(response))
-        .catch((err) => console.log(err));
+      axios.post(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/maxAPI/`, {
+          "user": user,
+          "exercise": exercise,
+          "weight": weight,
+          "num_of_reps": reps,
+          "created_at": `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`,
+          "active": true
+      })
+
+      .then((response) => displayOutput(response))
+      .catch((err) => console.log(err));
+
     }
 
     function exerciseListsBuild() {
 
-        let userLists = [...exercises]
+      let maxes = []
 
-        let exerciseLists = []
+      for (const max of props.maxes) {
+        maxes.push(max.exercise)
+      }
 
-        for (let i = 0; i < userLists.length; i++) {
-            exerciseLists.push(
+      let exerciseLists = []
+
+      for (const exercise of exercises) {
+            if (!maxes.includes(exercise.name)) {
+              exerciseLists.push(
                 <>
                     <option 
-                        value= {userLists[i].id}
-                        // id={Date().now()}
+                        value= {exercise.id}
                     >
-                        {userLists[i].name}
+                        {exercise.name}
                     </option>
                 </>
-            )
-        }
+              )
+            }
+      }
 
-        return exerciseLists
+      return exerciseLists
         
     }
 
@@ -68,7 +74,7 @@ function NewMax(props) {
           keyboard={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>{props.title} Max</Modal.Title>
+            <Modal.Title>New Max</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             Congratulations on your new PR!!
@@ -93,7 +99,7 @@ function NewMax(props) {
             <Button 
               variant="danger"
               onClick={() => {
-                postMax(props.user, props.exerciseId, weight.current.value, 1);
+                postMax(props.user, exerciseList.current.value, weight.current.value, 1);
                 handleClose()
               }}
             >

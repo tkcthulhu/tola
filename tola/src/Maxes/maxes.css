@@ -1,0 +1,8 @@
+#new-max-button {
+    font-weight: bolder;
+    font-size: large;
+    position:fixed;
+    top: 92%;
+    left: 12.5%;
+    padding: 7.5px;
+}

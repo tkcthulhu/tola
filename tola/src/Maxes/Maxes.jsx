@@ -2,6 +2,8 @@ import { useState } from 'react'
 import update from '../img/update-button.png'
 import UpdateMax from '../Modals/UpdateMax'
 import NewMax from '../Modals/NewMax'
+import Button from 'react-bootstrap/esm/Button'
+import './maxes.css'
 
 function Maxes(props) {
 
@@ -11,6 +13,14 @@ function Maxes(props) {
 
     let maxes = [...props.users.maxes]
 
+    maxes = maxes.sort((a, b) => {
+        if (a.exercise < b.exercise)
+          return -1;
+        if (a.exercise > b.exercise)
+          return 1;
+        return 0;
+      })
+
     const handleShow = () => {
         props.setShow(true)
     };
@@ -18,8 +28,6 @@ function Maxes(props) {
     let max_view = []
 
     for (const max of maxes) {
-
-        let i = `${props.users.id}${max.exercise.id}`
 
         max_view.push(
             <li className="list-group-item">
@@ -52,12 +60,18 @@ function Maxes(props) {
     
     return (
         <>
-            <button onClick={() => {props.setShowNewMax(true)}}>This</button>
             <ul className="list-group list-group-flush">
                 {max_view}
             </ul>
-        <NewMax show={props.showNewMax} setShow={props.setShowNewMax} user={props.users.id}/>
+        <NewMax show={props.showNewMax} setShow={props.setShowNewMax} user={props.users.id} maxes={maxes}/>
         <UpdateMax show={props.show} setShow={props.setShow} title={exercise} exerciseId={exerciseId} user={props.users.id} oldMax={oldMax}/>
+        <Button
+            variant="danger"
+            onClick={() => {props.setShowNewMax(true)}}
+            id="new-max-button"
+        >
+            Set a New Max
+        </Button>
         </>
     )
 }
