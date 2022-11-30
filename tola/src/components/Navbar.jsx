@@ -1,9 +1,12 @@
 import {
-  useNavigate,
+  useNavigate, useLocation
 } from "react-router-dom";
 
 function Navbar(props) {
+
   let navigate = useNavigate();
+
+  let location = useLocation();
 
   return(
     <>
@@ -11,7 +14,7 @@ function Navbar(props) {
         <li className="nav-item">
           <a 
             id='Home' 
-            className="nav-link" 
+            className={`nav-link ${location.pathname === '/home' ? 'active' : ''}`} 
             aria-current="page" 
             onClick={() => {
               navigate('/');
@@ -23,7 +26,7 @@ function Navbar(props) {
         <li className="nav-item">
           <a 
             id='Training' 
-            className="nav-link" 
+            className={`nav-link ${location.pathname === '/training' ? 'active' : ''}`} 
             aria-current="page"
             onClick={() => {
               navigate('/training')
@@ -35,7 +38,7 @@ function Navbar(props) {
         <li className="nav-item">
           <a 
             id='Maxes' 
-            className="nav-link" 
+            className={`nav-link ${location.pathname === '/maxes' ? 'active' : ''}`} 
             aria-current="page" 
             onClick={() => {
               navigate('/maxes')
@@ -47,7 +50,7 @@ function Navbar(props) {
         <li className="nav-item">
           <a 
             id='Programs' 
-            className="nav-link" 
+            className={`nav-link ${location.pathname === '/programs' ? 'active' : ''}`} 
             aria-current="page"
             onClick={() => {
               navigate('/programs')

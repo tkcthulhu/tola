@@ -6,6 +6,11 @@ import React from 'react';
 
 function UpdateMax(props) {
 
+  function useForceUpdate() {
+    const [value, setValue] = React.useState(0);
+    return () => setValue((value) => value + 1);
+  }
+
   const weight = React.useRef(null);
 
   async function postMax(user, exercise, weight, reps) {
@@ -62,6 +67,7 @@ function UpdateMax(props) {
               postMax(props.user, props.exerciseId, weight.current.value, 1);
               deactivateOldMax(props.oldMax)
               handleClose()
+              useForceUpdate();
             }}
           >
             Set New Max

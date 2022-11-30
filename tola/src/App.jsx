@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import './App.css';
 import Header from './components/Header';
@@ -17,17 +17,19 @@ function App() {
   const [showNewMax, setShowNewMax] = useState(false)
   const [units, setUnits] = useState('pounds');
 
-  let id = 2
+  let location = useLocation();
+
+  let id = 3
 
   useEffect(() => {
     axios.get(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/usersAPI/${id}`)
       .then((resp) => setUsers(resp.data));
-  }, [show])
+  }, [show, showNewMax, location])
+
   return (
-    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Header users={users} />}>
-          <Route path="" element={<Home />} />
+          <Route path="home" element={<Home />} />
           <Route path="training" element={<Training />} />
           <Route path="maxes" element={<Maxes users={users} show={show} setShow={setShow} showNewMax={showNewMax} setShowNewMax={setShowNewMax} />} />
           <Route path="programs" element={<Programs />} />
@@ -35,7 +37,6 @@ function App() {
           <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
-    </BrowserRouter>
   );
 }
 

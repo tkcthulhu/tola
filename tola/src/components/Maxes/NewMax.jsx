@@ -7,6 +7,13 @@ import React from 'react';
 
 function NewMax(props) {
 
+  function useForceUpdate() {
+    const [value, setValue] = useState(0);
+    return () => setValue((value) => value + 1);
+  }
+
+    const forceUpdate = useForceUpdate()
+
     const weight = React.useRef(null);
     const exerciseList = React.useRef(null);
 
@@ -100,6 +107,7 @@ function NewMax(props) {
               onClick={() => {
                 postMax(props.user, exerciseList.current.value, weight.current.value, 1);
                 handleClose()
+                forceUpdate
               }}
             >
               Set New Max
