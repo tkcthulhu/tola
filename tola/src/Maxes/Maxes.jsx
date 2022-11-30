@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import update from '../img/update-button.png'
-import UpdateMax from '../Modals/UpdateMax'
-import NewMax from '../Modals/NewMax'
+import UpdateMax from './UpdateMax'
+import NewMax from './NewMax'
 import Button from 'react-bootstrap/esm/Button'
 import './maxes.css'
 
