@@ -1,60 +1,63 @@
 import {
-  useNavigate,
+  useNavigate, useLocation
 } from "react-router-dom";
 
 function Navbar(props) {
+
   let navigate = useNavigate();
+
+  let location = useLocation();
 
   return(
     <>
       <ul className="nav nav-tabs">
         <li className="nav-item">
-          <a 
-            id='Home' 
-            className="nav-link" 
+          <div 
+            id='Dashboard' 
+            className={`nav-link ${location.pathname === '/tola/dashboard' ? 'active' : ''}`} 
             aria-current="page" 
             onClick={() => {
-              navigate('/');
+              navigate('/tola/dashboard');
             }}
             >
             Home
-          </a>
+          </div>
         </li>
         <li className="nav-item">
-          <a 
+          <div 
             id='Training' 
-            className="nav-link" 
+            className={`nav-link ${location.pathname === '/tola/training' ? 'active' : ''}`} 
             aria-current="page"
             onClick={() => {
-              navigate('/training')
+              navigate('/tola/training')
             }}
             >
             Training
-          </a>
+          </div>
         </li>
         <li className="nav-item">
-          <a 
+          <div 
             id='Maxes' 
-            className="nav-link" 
+            className={`nav-link ${location.pathname === '/tola/maxes' ? 'active' : ''}`} 
             aria-current="page" 
             onClick={() => {
-              navigate('/maxes')
+              navigate('/tola/maxes')
             }}
             >
             Maxes
-          </a>
+          </div>
         </li>
         <li className="nav-item">
-          <a 
+          <div 
             id='Programs' 
-            className="nav-link" 
+            className={`nav-link ${location.pathname === '/tola/programs' ? 'active' : ''}`} 
             aria-current="page"
             onClick={() => {
-              navigate('/programs')
+              navigate('/tola/programs')
             }}
             >
             Programs
-          </a>
+          </div>
         </li>
       </ul>
     </>

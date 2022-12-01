@@ -1,5 +1,4 @@
 import axios from "axios";
-import displayOutput from 'axios';
 import { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -7,60 +6,64 @@ import React from 'react';
 
 function NewMax(props) {
 
-    const weight = React.useRef(null);
-    const exerciseList = React.useRef(null);
+  function useForceUpdate() {
+    const [value, setValue] = useState(0);
+    let v = value
+    return () => setValue((value) => v + 1);
+  }
 
-    const [exercises, setExercises] = useState([])
+  const forceUpdate = useForceUpdate()
 
-    useEffect(() => {
-        axios.get(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/exerciseAPI/`)
-        .then((resp) => setExercises(resp.data));
-    }, [])
+  const weight = React.useRef(null);
+  const exerciseList = React.useRef(null);
 
-    const handleClose = () => {
-        props.setShow(false)
-    };
+  const [exercises, setExercises] = useState([])
 
-    function postMax(user, exercise, weight, reps) {
+  useEffect(() => {
+      axios.get(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/exerciseAPI/`)
+      .then((resp) => setExercises(resp.data));
+  }, [])
 
-      axios.post(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/maxAPI/`, {
-          "user": user,
-          "exercise": exercise,
-          "weight": weight,
-          "num_of_reps": reps,
-          "created_at": `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`,
-          "active": true
-      })
+  const handleClose = () => {
+      props.setShow(false)
+  };
 
-      // .then((response) => displayOutput(response))
-      .catch((err) => console.log(err));
+  function postMax(user, exercise, weight, reps) {
+    axios.post(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/maxAPI/`, {
+        "user": user,
+        "exercise": exercise,
+        "weight": weight,
+        "num_of_reps": reps,
+        "created_at": `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`,
+        "active": true
+    })
+    .catch((err) => console.log(err));
+  }
 
+  function exerciseListsBuild() {
+
+    let maxes = []
+
+    for (const max of props.maxes) {
+      maxes.push(max.exercise)
     }
 
-    function exerciseListsBuild() {
+    let exerciseLists = []
 
-      let maxes = []
-
-      for (const max of props.maxes) {
-        maxes.push(max.exercise)
+    for (const exercise of exercises) {
+      if (!maxes.includes(exercise.name)) {
+        exerciseLists.push(
+            <option 
+                value= {exercise.id}
+                key= {exercise.id}
+            >
+                {exercise.name}
+            </option>
+        )
       }
+    }
 
-      let exerciseLists = []
-
-      for (const exercise of exercises) {
-            if (!maxes.includes(exercise.name)) {
-              exerciseLists.push(
-                  <option 
-                      value= {exercise.id}
-                      key= {exercise.id}
-                  >
-                      {exercise.name}
-                  </option>
-              )
-            }
-      }
-
-      return exerciseLists
+    return exerciseLists
         
     }
 
@@ -100,6 +103,7 @@ function NewMax(props) {
               onClick={() => {
                 postMax(props.user, exerciseList.current.value, weight.current.value, 1);
                 handleClose()
+                forceUpdate()
               }}
             >
               Set New Max

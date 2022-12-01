@@ -1,10 +1,17 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from "axios";
-import displayOutput from 'axios';
 import React from 'react';
 
 function UpdateMax(props) {
+
+  function useForceUpdate() {
+    const [value, setValue] = React.useState(0);
+    let v = value
+    return () => setValue((value) => v + 1);
+  }
+
+  let forceUpdate = useForceUpdate()
 
   const weight = React.useRef(null);
 
@@ -18,7 +25,6 @@ function UpdateMax(props) {
         "created_at": `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`,
         "active": true
     })
-    .then((response) => displayOutput(response))
     .catch((err) => console.log(err));
   }
 
@@ -62,6 +68,7 @@ function UpdateMax(props) {
               postMax(props.user, props.exerciseId, weight.current.value, 1);
               deactivateOldMax(props.oldMax)
               handleClose()
+              forceUpdate();
             }}
           >
             Set New Max
