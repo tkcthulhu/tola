@@ -51,16 +51,16 @@ function NewMax(props) {
     let exerciseLists = []
 
     for (const exercise of exercises) {
-          if (!maxes.includes(exercise.name)) {
-            exerciseLists.push(
-                <option 
-                    value= {exercise.id}
-                    key= {exercise.id}
-                >
-                    {exercise.name}
-                </option>
-            )
-          }
+      if (!maxes.includes(exercise.name)) {
+        exerciseLists.push(
+            <option 
+                value= {exercise.id}
+                key= {exercise.id}
+            >
+                {exercise.name}
+            </option>
+        )
+      }
     }
 
     return exerciseLists

@@ -28,7 +28,7 @@ function Header(props) {
                             alt="Logo"
                             id='header-logo'
                             onClick={() => {
-                                navigate('/');
+                                navigate('/tola/dashboard');
                             }}
                             />
                     </div>
@@ -47,7 +47,7 @@ function Header(props) {
                             className="user-icon-png"
                             src={UserIcon}
                             alt="User Icon"
-                            onClick={() => navigate('/profile')}
+                            onClick={() => navigate('/tola/profile')}
                             />
                     </div>
                 </div>

@@ -34,8 +34,8 @@ import {
       username,
       email,
       password,
-      firstName,
-      lastName
+      first_name,
+      last_name
     }) {
       await request({
         url: REGISTER_ENDPOINT,
@@ -44,8 +44,8 @@ import {
           username,
           email,
           password,
-          first_name: firstName,
-          last_name: lastName,
+          first_name: first_name,
+          last_name: last_name,
         }
       })
       .then(() => {

@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import AuthService from "../services/auth.service";
 import { useNavigate } from 'react-router-dom';
 import { useGlobalState } from "../context/GlobalState";
+import Button from "react-bootstrap/esm/Button";
 import jwtDecode from "jwt-decode";
 import logo from '../img/logo.png'
 
@@ -25,7 +26,7 @@ function Login(props) {
           currentUserToken: resp.access,
           currentUser: data
         })
-        navigate('/profile')
+        navigate('/tola/dashboard')
       });
   }
 
@@ -59,12 +60,13 @@ function Login(props) {
               id="floatingPassword" 
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
             <label htmlFor="floatingPassword">Password</label>
           </div>
           <button className="w-100 btn btn-lg btn-primary login" type="submit">Sign in</button>
           <br/>
-          <button className="w-100 btn btn-lg btn-primary login" type="submit">Register</button>
+          <Button className="w-100 btn btn-lg btn-primary login" onClick={() => navigate("/register")}>Register</Button>
           <p className="mt-5 mb-3 text-muted">©2022</p>
         </form>
       </main>
