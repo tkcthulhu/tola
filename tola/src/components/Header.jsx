@@ -60,7 +60,7 @@ function Header(props) {
                 onClick={() => {
                     navigate('/settings');
                 }}
-                />
+            />
         </>
     )
 }
