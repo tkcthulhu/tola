@@ -1,7 +1,19 @@
 import './Profile.css'
-import UserIcon from '../img/athlete.png'
+import UserIcon from '../../img/athlete.png'
+import Button from 'react-bootstrap/esm/Button'
+import AuthService from '../../services/auth.service'
+import { useNavigate } from 'react-router-dom'
+import UpdateGym from './UpdateGym'
 
 function Profile(props) {
+
+    let navigate = useNavigate();
+
+    const handleLogout = () => {
+        AuthService
+            .logout()
+        navigate("/")
+    }
 
     return(
         <>
@@ -33,9 +45,13 @@ function Profile(props) {
                 </li>
                 <li className="list-group-item">
                     My Gym: {props.users.gym.name}
+                    <br/>
+                    <Button onClick={() => props.setShow(true)}>Update</Button>
                 </li>
             </ul>
         </div>
+        <Button onClick={() => handleLogout()}>Logout</Button>
+        <UpdateGym users={props.users} show={props.show} setShow={props.setShow} />
         </>
     )
 }

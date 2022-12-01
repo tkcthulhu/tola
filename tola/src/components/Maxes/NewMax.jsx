@@ -57,7 +57,7 @@ function NewMax(props) {
                 value= {exercise.id}
                 key= {exercise.id}
             >
-                {exercise.name}
+              {exercise.name}
             </option>
         )
       }
@@ -82,13 +82,13 @@ function NewMax(props) {
             Congratulations on your new PR!!
             <br/>
             <select 
-                    name="list" 
-                    id="listSelect"
-                    className='inputItem'
-                    ref={exerciseList}
-                >
-                    {exerciseListsBuild()}
-                </select>
+              name="list" 
+              id="listSelect"
+              className='inputItem'
+              ref={exerciseList}
+            >
+              {exerciseListsBuild()}
+            </select>
             <br/>
             What did you hit?
             <br/>
