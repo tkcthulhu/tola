@@ -13,12 +13,10 @@ function Header(props) {
     let username = ''
     let gym = ''
 
-    if (props.users) {
-        username = props.users.username
-        gym = { ...props.users.gym }
-        gym = gym.name
-    }
-
+    username = props.users.username
+    gym = { ...props.users.gym }
+    gym = gym.name
+    
     return (
         <>
             <div className='container-fluid'>
@@ -32,7 +30,7 @@ function Header(props) {
                             onClick={() => {
                                 navigate('/');
                             }}
-                        />
+                            />
                     </div>
                     <div className="col-4 d-flex justify-content-end">
                         <div className="row">
@@ -43,7 +41,6 @@ function Header(props) {
                                 <p id='gym-name-header'>{gym}</p>
                             </div>
                         </div>
-
                     </div>
                     <div className="col user-icon d-flex justify-content-end">
                         <img
@@ -51,7 +48,7 @@ function Header(props) {
                             src={UserIcon}
                             alt="User Icon"
                             onClick={() => navigate('/profile')}
-                        />
+                            />
                     </div>
                 </div>
             </div>
@@ -61,9 +58,9 @@ function Header(props) {
                 alt="settings"
                 id='settings-button'
                 onClick={() => {
-                navigate('/settings');
+                    navigate('/settings');
                 }}
-            />
+                />
         </>
     )
 }
