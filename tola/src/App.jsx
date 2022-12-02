@@ -7,7 +7,7 @@ import { useGlobalState } from './context/GlobalState';
 import Login from './components/Login';
 import Register from './components/Register';
 import Header from './components/Header';
-import Profile from './components/Profile';
+import Profile from './components/Profile/Profile';
 import Settings from './components/Settings';
 import Dashboard from './components/Dashboard';
 import Training from './components/Training';
@@ -47,7 +47,7 @@ function App() {
           <Route path="training" element={<Training />} />
           <Route path="maxes" element={<Maxes users={users} show={show} setShow={setShow} showNewMax={showNewMax} setShowNewMax={setShowNewMax} />} />
           <Route path="programs" element={<Programs />} />
-          <Route path="profile" element={<Profile users={users}/>} />
+          <Route path="profile" element={<Profile users={users} show={show} setShow={setShow}/>} />
           <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
