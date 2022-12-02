@@ -12,7 +12,7 @@ function Profile(props) {
     const handleLogout = () => {
         AuthService
             .logout()
-        navigate("/")
+        navigate("/login")
     }
 
     return(

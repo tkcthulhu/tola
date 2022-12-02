@@ -6,9 +6,12 @@ import {
 import Logo from '../img/logo.png'
 import UserIcon from '../img/athlete.png'
 import settings_button from '../img/settings_button.png'
+import { useGlobalState } from "../context/GlobalState";
 
 function Header(props) {
     let navigate = useNavigate();
+
+    const [ state, dispatch ] = useGlobalState();
 
     let username = ''
     let gym = ''
@@ -58,7 +61,7 @@ function Header(props) {
                 alt="settings"
                 id='settings-button'
                 onClick={() => {
-                    navigate('/settings');
+                    navigate('/tola/settings');
                 }}
             />
         </>

@@ -27,7 +27,6 @@ function UpdateGym(props) {
     function deactivateOldGym(currentGym) {
 
         axios.put(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/usergymAPI/${currentGym}/`, {
-            "id": currentGym,
             "active": false
         })
 
@@ -44,7 +43,7 @@ function UpdateGym(props) {
             deactivateOldGym(props.users.gym.user_gym_id)
         }
 
-        let currentGym = gym
+        let currentGym = false
 
         for (const userGym of userGyms) {
             if (userGym.user == user && userGym.gym == gym) {
@@ -53,7 +52,7 @@ function UpdateGym(props) {
             } 
         }
         
-        if (currentGym === gym) {
+        if (!currentGym) {
             console.log('new')
             axios
                 .post(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/usergymAPI/`, {
@@ -61,11 +60,13 @@ function UpdateGym(props) {
                     "gym": gym,
                     "active": true,
                 })
-            .catch((err) => console.log(err + 'this one officer'));
+            .catch((err) => console.log(err + ' it\'s this one officer'));
         } else {
             console.log('update')
             axios
                 .put(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/usergymAPI/${currentGym}/`, {
+                    "user": user,
+                    "gym": gym,
                     "active": true,
             })
         }
