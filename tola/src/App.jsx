@@ -39,15 +39,13 @@ function App() {
       .then((resp) => setUsers(resp.data));
   }, [show, showNewMax, location])
 
-
-
   return (      
       <Routes>
         <Route path="/login" element={<Login />}/>
         <Route path="/register" element={<Register />}/>
         <Route path="/tola/" element={<Header users={users} />}>
           <Route path="dashboard" element={<Dashboard users={users}/>} />
-          <Route path="training" element={<Training />} />
+          <Route path="training" element={<Training users={users}/>} />
           <Route path="maxes" element={<Maxes users={users} show={show} setShow={setShow} showNewMax={showNewMax} setShowNewMax={setShowNewMax} />} />
           <Route path="programs" element={<Programs />} />
           <Route path="profile" element={<Profile users={users} show={show} setShow={setShow}/>} />

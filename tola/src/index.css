@@ -86,3 +86,7 @@ code {
 .register-form {
   padding: 10px
 }
+
+.carousel-indicators {
+  position: relative;
+}

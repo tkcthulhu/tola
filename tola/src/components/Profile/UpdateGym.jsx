@@ -46,7 +46,8 @@ function UpdateGym(props) {
         let currentGym = false
 
         for (const userGym of userGyms) {
-            if (userGym.user == user && userGym.gym == gym) {
+            if (userGym.user == user && userGym.gym == gym && !userGym.status) {
+                
                 currentGym=userGym.id
                 console.log(userGym.id)
             } 
@@ -65,8 +66,6 @@ function UpdateGym(props) {
             console.log('update')
             axios
                 .put(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/usergymAPI/${currentGym}/`, {
-                    "user": user,
-                    "gym": gym,
                     "active": true,
             })
         }
