@@ -31,7 +31,7 @@ function Header(props) {
                             alt="Logo"
                             id='header-logo'
                             onClick={() => {
-                                navigate('/tola/dashboard');
+                                navigate('/user/dashboard');
                             }}
                             />
                     </div>
@@ -50,7 +50,7 @@ function Header(props) {
                             className="user-icon-png"
                             src={UserIcon}
                             alt="User Icon"
-                            onClick={() => navigate('/tola/profile')}
+                            onClick={() => navigate('/user/profile')}
                             />
                     </div>
                 </div>
@@ -61,7 +61,7 @@ function Header(props) {
                 alt="settings"
                 id='settings-button'
                 onClick={() => {
-                    navigate('/tola/settings');
+                    navigate('/user/settings');
                 }}
             />
         </>

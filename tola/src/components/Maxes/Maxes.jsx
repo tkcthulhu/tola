@@ -61,9 +61,11 @@ function Maxes(props) {
 
     return (
         <Layout>
-            <ul className="list-group list-group-flush">
-                {max_view}
-            </ul>
+            <div className="container page">
+                <ul className="list-group list-group-flush">
+                    {max_view}
+                </ul>
+            </div>
             <NewMax show={props.showNewMax} setShow={props.setShowNewMax} user={props.users.id} maxes={maxes} />
             <UpdateMax show={props.show} setShow={props.setShow} title={exercise} exerciseId={exerciseId} user={props.users.id} oldMax={oldMax} />
             <Button

@@ -43,7 +43,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />}/>
         <Route path="/register" element={<Register />}/>
-        <Route path="/tola/" element={<Header users={users} />}>
+        <Route path="/user/" element={<Header users={users} />}>
           <Route path="dashboard" element={<Dashboard users={users}/>} />
           <Route path="training" element={<Training users={users}/>} />
           <Route path="maxes" element={<Maxes users={users} show={show} setShow={setShow} showNewMax={showNewMax} setShowNewMax={setShowNewMax} />} />

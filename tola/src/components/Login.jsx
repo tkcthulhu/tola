@@ -26,7 +26,7 @@ function Login(props) {
           currentUserToken: resp.access,
           currentUser: data
         })
-        navigate('/tola/dashboard')
+        navigate('/user/dashboard')
       });
   }
 
