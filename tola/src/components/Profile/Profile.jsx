@@ -12,12 +12,12 @@ function Profile(props) {
     const handleLogout = () => {
         AuthService
             .logout()
-        navigate("/")
+        navigate("/login")
     }
 
     return(
         <>
-        <div className="container">       
+        <div className="container page">       
         <h3>Profile</h3>
         <h2>{props.users.username}</h2>
             <ul className="list-group list-group-flush">
@@ -49,8 +49,10 @@ function Profile(props) {
                     <Button onClick={() => props.setShow(true)}>Update</Button>
                 </li>
             </ul>
+            <div className="row justify-content-center">
+                <Button onClick={() => handleLogout()} variant='danger'>Logout</Button>
+            </div>
         </div>
-        <Button onClick={() => handleLogout()}>Logout</Button>
         <UpdateGym users={props.users} show={props.show} setShow={props.setShow} />
         </>
     )

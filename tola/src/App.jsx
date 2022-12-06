@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 
 import './App.css';
 import { useGlobalState } from './context/GlobalState';
@@ -23,28 +23,29 @@ function App() {
 
   let location = useLocation();
 
+  let navigate = useNavigate()
+
   let id = ''
 
   if (state.currentUser) {
     id = state.currentUser.user_id
-  } else {
+  } 
+  // else {
+  //   navigate('/login')
+  // }
 
-  }
+  useEffect(() => {
+    axios.get(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/usersAPI/${id}`)
+      .then((resp) => setUsers(resp.data));
+  }, [show, showNewMax, location])
 
-    useEffect(() => {
-      axios.get(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/usersAPI/${id}`)
-        .then((resp) => setUsers(resp.data));
-    }, [show, showNewMax, location, id])
-
-
-
-  return (
+  return (      
       <Routes>
-        <Route path="/" element={<Login />}/>
+        <Route path="/login" element={<Login />}/>
         <Route path="/register" element={<Register />}/>
-        <Route path="/tola/" element={<Header users={users} />}>
+        <Route path="/user/" element={<Header users={users} />}>
           <Route path="dashboard" element={<Dashboard users={users}/>} />
-          <Route path="training" element={<Training />} />
+          <Route path="training" element={<Training users={users}/>} />
           <Route path="maxes" element={<Maxes users={users} show={show} setShow={setShow} showNewMax={showNewMax} setShowNewMax={setShowNewMax} />} />
           <Route path="programs" element={<Programs />} />
           <Route path="profile" element={<Profile users={users} show={show} setShow={setShow}/>} />

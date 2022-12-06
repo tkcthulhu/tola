@@ -14,7 +14,7 @@ function Dashboard(props) {
                 </li>
                 <li className="list-group-item">
                     <h6>It's {date}</h6>
-                    <p className='tab'>Let's get you FECKIN JACK3D</p>
+                    <p className='tab'>Let's get you F3kK1N JACK3D</p>
                 </li>
                 <li className="list-group-item">
                     <div className="row justify-content-center">

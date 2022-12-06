@@ -22,7 +22,6 @@ function UpdateMax(props) {
         "exercise": exercise,
         "weight": weight,
         "num_of_reps": reps,
-        "created_at": `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`,
         "active": true
     })
     .catch((err) => console.log(err));
