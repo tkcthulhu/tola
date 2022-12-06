@@ -163,3 +163,20 @@ code {
 .space {
   padding-bottom: 5vh;
 }
+
+.italics {
+  font-family: cursive;
+  font-style: italic;
+}
+
+.button-space {
+  padding-bottom: 2vh;
+}
+
+.h1-button {
+  padding-top: 4px;
+}
+
+.active-color {
+  color: rgb(181, 0, 0)
+}

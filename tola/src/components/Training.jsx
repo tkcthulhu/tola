@@ -63,7 +63,7 @@ function Training(props) {
                                         <Card.Text className="d-flex justify-content-center">
                                             <strong>
                                             <br/>
-                                            {set.weight}lbs
+                                            {set.weight} lbs
                                             <br/>
                                             {set.num_of_reps} reps
                                             </strong>
@@ -95,7 +95,7 @@ function Training(props) {
                 this_program.push(
                     <Carousel.Item>
                         <div className="container">
-                            <p>Session: {session.session}</p>
+                            <p className="tab">Week: {session.week} <span className="tab">Session: {session.session}</span></p>
                             <Accordion defaultActiveKey={null} flush className="training-accordion">
                                 {this_session}
                             </Accordion>
@@ -106,8 +106,15 @@ function Training(props) {
 
             myTraining.push(
                 <div className="container page">
-                    <h2 className="norse-bold">{program.program}</h2>
-                    <h6 className="tab">Coach: {program.coach}</h6>
+                    <div className="row">
+                        <div className="col-9">
+                            <h1 className="norse-bold">{program.program}</h1>
+                        </div>
+                        <div className="col-3 norse-bold">
+                            <Button variant="dark">Week</Button>
+                        </div>
+                    </div>
+                    <h6 className="tab">{program.coach}</h6>
                     <Carousel activeIndex={index} onSelect={handleSelect} interval={null} variant="dark">
                         {this_program}
                     </Carousel>

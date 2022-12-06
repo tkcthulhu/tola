@@ -34,19 +34,19 @@ function Login(props) {
   return(
     <div className="container" id='login-cont'> 
       <div className="row justify-content-center">
-        <div className="col-12 d-flex justify-content-center">
-            <img src={logoText} alt="Tola" />
+        <div className="col-12 d-flex justify-content-center top-page">
+          <img src={logoText} alt="Tola" />
         </div>
-        <div className="col-10">
-          <img className="ratio" src={logo} alt="logo" id='login-logo'/>
+        <div className="col-7">
+          <img src={logo} alt='logo' className='ratio' />
         </div>
         <div className="col-12 d-flex justify-content-center space">
-            <h1 className='norse-bold'>To Endure</h1>
+          <h4 className='italics'>To Endure</h4>
         </div>
       </div>
       <main className="form-signin w-100 m-auto d-flex justify-content-center">
         <form onSubmit={handleLogin}>
-          <h1 className="h3 mb-3 fw-normal norse">Please sign in</h1>
+          <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
           <div className="form-floating">
             <input 
               type="text" 
@@ -57,7 +57,7 @@ function Login(props) {
               onChange={(e) => setUsername(e.target.value)}
               required
             />
-            <label htmlFor="username" className="norse">Username</label>
+            <label htmlFor="username">Username</label>
         
           </div>
           <div className="form-floating">
@@ -69,7 +69,7 @@ function Login(props) {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <label htmlFor="floatingPassword" className="norse">Password</label>
+            <label htmlFor="floatingPassword">Password</label>
           </div>
           <Button className="w-100 btn btn-lg btn-primary login norse-bold" variant='dark' type="submit">Sign in</Button>
           <p className="mt-5 mb-3 text-muted">©2022</p>
