@@ -33,17 +33,13 @@ function Maxes(props) {
         max_view.push(
             <li key={max.id} className="list-group-item">
                 <div className="row">
-                    <div className="col">
+                    <div className="col-9">
                         <h2>
                             {max.exercise}
                         </h2>
+                        <p className="tab">{max.reps} Rep Max: {max.weight}<br/>{max.date}</p>
                     </div>
-                </div>
-                <div className="row">
-                    <div className="col-9">
-                        <p className="tab">{max.reps} Rep Max: {max.weight}</p><p className="tab">{max.date}</p>
-                    </div>
-                    <div className="col-3">
+                    <div className="col-3 d-flex align-items-center">
                         <img
                             src={update}
                             alt=""

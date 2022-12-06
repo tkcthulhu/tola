@@ -14,7 +14,7 @@ function Navbar(props) {
         <li className="nav-item">
           <div 
             id='Dashboard' 
-            className={`nav-link ${location.pathname === '/user/dashboard' ? 'active active-color' : ''}`} 
+            className={`nav-link ${location.pathname === '/user/dashboard' ? 'active' : 'inactive'}`} 
             aria-current="page" 
             onClick={() => {
               navigate('/user/dashboard');
@@ -28,7 +28,7 @@ function Navbar(props) {
         <li className="nav-item">
           <div 
             id='Training' 
-            className={`nav-link ${location.pathname === '/user/training' ? 'active active-color' : ''}`} 
+            className={`nav-link ${location.pathname === '/user/training' ? 'active' : 'inactive'}`} 
             aria-current="page"
             onClick={() => {
               navigate('/user/training')
@@ -42,7 +42,7 @@ function Navbar(props) {
         <li className="nav-item">
           <div 
             id='Maxes' 
-            className={`nav-link ${location.pathname === '/user/maxes' ? 'active active-color' : ''}`} 
+            className={`nav-link ${location.pathname === '/user/maxes' ? 'active' : 'inactive'}`} 
             aria-current="page" 
             onClick={() => {
               navigate('/user/maxes')
@@ -56,7 +56,7 @@ function Navbar(props) {
         <li className="nav-item">
           <div 
             id='Programs' 
-            className={`nav-link ${location.pathname === '/user/programs' ? 'active active-color' : ''}`} 
+            className={`nav-link ${location.pathname === '/user/programs' ? 'active' : 'inactive'}`} 
             aria-current="page"
             onClick={() => {
               navigate('/user/programs')

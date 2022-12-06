@@ -57,21 +57,20 @@ function Training(props) {
                             <Card className="exercise-card">
                                 <Card.Body className="row exercise-body">
                                     <div className="col-6">
-                                        <Card.Title>
-                                            <strong className="norse-bold">{set.percent}%</strong>
+                                        <Card.Title className="d-flex justify-content-center">
+                                            <h3><strong>{set.percent}%</strong></h3>
                                         </Card.Title>
                                         <Card.Text className="d-flex justify-content-center">
-                                            <strong>
-                                            <br/>
+                                            <h4>
                                             {set.weight} lbs
                                             <br/>
-                                            {set.num_of_reps} reps
-                                            </strong>
+                                            <span className="d-flex justify-content-center">{set.num_of_reps} reps</span>
+                                            </h4>
                                         </Card.Text>
                                     </div>
-                                    <ButtonGroup className="col-6 norse-bold" vertical>
+                                    <ButtonGroup className="col-6" vertical>
                                             <Button size="small" variant="dark">Complete</Button>
-                                            <Button size="small" variant="danger">Failed</Button>
+                                            <Button className='lil-button' size="small" variant="danger">Failed</Button>
                                     </ButtonGroup>
                                 </Card.Body>
                             </Card>
@@ -81,7 +80,7 @@ function Training(props) {
 
                     this_session.push(
                         <Accordion.Item eventKey={i}>
-                            <Accordion.Header><h2 className="norse-bold">{exercise.exercise}</h2><br/><span className="tab">Sets: {(exercise.sets).length}</span></Accordion.Header>
+                            <Accordion.Header><h2 className="">{exercise.exercise}</h2><br/><span className="tab">Sets: {(exercise.sets).length}</span></Accordion.Header>
                             <Accordion.Body className="row exercise-sets justify-content-center exercise-list">
                                 {this_exercise}
                             </Accordion.Body>

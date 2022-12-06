@@ -18,7 +18,7 @@ function Profile(props) {
     return(
         <>
         <div className="container page">       
-        <h3 className='norse-bold'>Profile</h3>
+        <h1 className='norse-bold'>Profile</h1>
         <h4 className='norse-bold'>{props.users.username}</h4>
             <ul className="list-group list-group-flush">
                 <li className="list-group-item">
@@ -44,10 +44,12 @@ function Profile(props) {
                     Email: {props.users.email}
                 </li>
                 <li className="list-group-item">
-                    My Gym: {props.users.gym.name}
-                    <div className="row justify-content-end">
-                        <div className="col-12 d-flex justify-content-end">
-                            <Button className='norse-bold' onClick={() => props.setShow(true)}>Update</Button>
+                    <div className="row">
+                        <div className="col-8 align-text-center">
+                            My Gym: {props.users.gym.name}
+                        </div>
+                        <div className="col-4 d-flex justify-content-end">
+                            <Button className='norse-bold' variant="dark" onClick={() => props.setShow(true)}>Update</Button>
                         </div>
                     </div>
                 </li>
@@ -55,7 +57,7 @@ function Profile(props) {
             </ul>
             <div className="row">
                 <div className="col-12 d-flex justify-content-center">
-                    <Button className='norse-bold' onClick={() => handleLogout()} variant='danger'>Logout</Button>
+                    <Button className='norse-bold lil-button' onClick={() => handleLogout()} variant='danger'>Logout</Button>
                 </div>
             </div>
         </div>

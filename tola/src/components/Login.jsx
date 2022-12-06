@@ -34,7 +34,7 @@ function Login(props) {
   return(
     <div className="container" id='login-cont'> 
       <div className="row justify-content-center">
-        <div className="col-12 d-flex justify-content-center top-page">
+        <div className="col-12 d-flex justify-content-center">
           <img src={logoText} alt="Tola" />
         </div>
         <div className="col-7">

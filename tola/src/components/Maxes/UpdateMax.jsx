@@ -64,6 +64,7 @@ function UpdateMax(props) {
         <Modal.Footer>
           <Button 
             variant="danger"
+            className='lil-button norse-bold'
             onClick={() => {
               postMax(props.user, props.exerciseId, weight.current.value, 1);
               deactivateOldMax(props.oldMax)
