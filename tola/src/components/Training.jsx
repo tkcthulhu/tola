@@ -58,7 +58,7 @@ function Training(props) {
                                 <Card.Body className="row exercise-body">
                                     <div className="col-6">
                                         <Card.Title>
-                                            <strong>{set.percent}%</strong>
+                                            <strong className="norse-bold">{set.percent}%</strong>
                                         </Card.Title>
                                         <Card.Text className="d-flex justify-content-center">
                                             <strong>
@@ -69,7 +69,7 @@ function Training(props) {
                                             </strong>
                                         </Card.Text>
                                     </div>
-                                    <ButtonGroup className="col-6" vertical>
+                                    <ButtonGroup className="col-6 norse-bold" vertical>
                                             <Button size="small" variant="dark">Complete</Button>
                                             <Button size="small" variant="danger">Failed</Button>
                                     </ButtonGroup>
@@ -81,7 +81,7 @@ function Training(props) {
 
                     this_session.push(
                         <Accordion.Item eventKey={i}>
-                            <Accordion.Header><strong>{exercise.exercise}</strong><br/><span className="tab">Sets: {(exercise.sets).length}</span></Accordion.Header>
+                            <Accordion.Header><h2 className="norse-bold">{exercise.exercise}</h2><br/><span className="tab">Sets: {(exercise.sets).length}</span></Accordion.Header>
                             <Accordion.Body className="row exercise-sets justify-content-center exercise-list">
                                 {this_exercise}
                             </Accordion.Body>
@@ -106,8 +106,8 @@ function Training(props) {
 
             myTraining.push(
                 <div className="container page">
-                    <h4>{program.program}</h4>
-                    <h6>Coach: {program.coach}</h6>
+                    <h2 className="norse-bold">{program.program}</h2>
+                    <h6 className="tab">Coach: {program.coach}</h6>
                     <Carousel activeIndex={index} onSelect={handleSelect} interval={null} variant="dark">
                         {this_program}
                     </Carousel>

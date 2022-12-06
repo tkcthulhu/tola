@@ -33,8 +33,10 @@ function Maxes(props) {
         max_view.push(
             <li key={max.id} className="list-group-item">
                 <div className="row">
-                    <div className="col">
-                        {max.exercise}
+                    <div className="col norse-bold">
+                        <h2>
+                            {max.exercise}
+                        </h2>
                     </div>
                 </div>
                 <div className="row">
@@ -72,6 +74,7 @@ function Maxes(props) {
                 variant="danger"
                 onClick={() => { props.setShowNewMax(true) }}
                 id="new-max-button"
+                className='norse-bold'
             >
                 Set a New Max
             </Button>

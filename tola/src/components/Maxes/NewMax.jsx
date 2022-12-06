@@ -73,6 +73,7 @@ function NewMax(props) {
           onHide={handleClose}
           backdrop="static"
           keyboard={false}
+          className='norse-bold'
         >
           <Modal.Header closeButton>
             <Modal.Title>New Max</Modal.Title>

@@ -102,6 +102,7 @@ function UpdateGym(props) {
             onHide={handleClose}
             backdrop="static"
             keyboard={false}
+            className='norse-bold'
         >
             <Modal.Header closeButton>
                 <Modal.Title>Select new gym</Modal.Title>

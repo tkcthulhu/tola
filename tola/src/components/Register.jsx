@@ -36,7 +36,7 @@ const Register = () => {
 
         <form onSubmit={handleRegister}>
           <div className="row justify-content-center">
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="username" className="norse-bold">Username:</label>
             <br/>
             <input
               type="text"
@@ -48,7 +48,7 @@ const Register = () => {
           </div>
           <br/>
           <div className="row justify-content-center">
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email" className="norse-bold">Email:</label>
             <br/>
             <input
               type="text"
@@ -60,7 +60,7 @@ const Register = () => {
           </div>
           <br/>
           <div className="row justify-content-center">
-            <label htmlFor="pass">Password (8 characters minimum):</label>
+            <label htmlFor="pass" className="norse-bold">Password (8 characters minimum):</label>
             <br/>
             <input
               type="password"
@@ -73,7 +73,7 @@ const Register = () => {
           </div>
           <br/>
           <div className="row justify-content-center">
-            <label htmlFor="passConf">Confirm Password:</label>
+            <label htmlFor="passConf" className="norse-bold">Confirm Password:</label>
             <br/>
             <input
               type="password"
@@ -85,7 +85,7 @@ const Register = () => {
           </div>
           <br/>
           <div className="row justify-content-center">
-            <label htmlFor="firstName">First Name:</label>
+            <label htmlFor="firstName" className="norse-bold">First Name:</label>
             <br/>
             <input
               type="text"
@@ -97,7 +97,7 @@ const Register = () => {
           </div>
           <br/>
           <div className="row justify-content-center">
-              <label htmlFor="lastName">Last Name:</label>
+              <label htmlFor="lastName" className="norse-bold">Last Name:</label>
               <br/>
               <input
                   type="text"
@@ -109,7 +109,7 @@ const Register = () => {
           </div>
           <br/>
           <div className="row justify-content-center">
-              <label htmlFor="birthDate">Birthdate:</label>
+              <label htmlFor="birthDate" className="norse-bold">Birthdate:</label>
               <br/>
               <input 
                   type="date"             
@@ -121,7 +121,7 @@ const Register = () => {
           </div>
           <br/>
           <div className="row justify-content-center">
-              <label htmlFor="weight">Weigth:</label>
+              <label htmlFor="weight" className="norse-bold">Weigth:</label>
               <br/>
               <input 
                   type="number"            
@@ -132,7 +132,7 @@ const Register = () => {
           </div>
           <br/>
           <div className="row justify-content-center">
-              <label htmlFor="Coach">Are you a Coach?</label>
+              <label htmlFor="Coach" className="norse-bold">Are you a Coach?</label>
               <br/>
               <input 
                   type="checkbox" 
@@ -144,7 +144,8 @@ const Register = () => {
           </div>
           <br/>
           <button
-            className="w-100 btn btn-lg btn-primary"
+            className="w-100 btn btn-lg btn-primary norse-bold"
+            variant='dark'
             type="submit"
             value="Register"
             disabled={(

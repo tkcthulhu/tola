@@ -18,8 +18,8 @@ function Profile(props) {
     return(
         <>
         <div className="container page">       
-        <h3>Profile</h3>
-        <h2>{props.users.username}</h2>
+        <h3 className='norse-bold'>Profile</h3>
+        <h4 className='norse-bold'>{props.users.username}</h4>
             <ul className="list-group list-group-flush">
                 <li className="list-group-item">
                     <div className="row justify-content-center">
@@ -45,12 +45,18 @@ function Profile(props) {
                 </li>
                 <li className="list-group-item">
                     My Gym: {props.users.gym.name}
-                    <br/>
-                    <Button onClick={() => props.setShow(true)}>Update</Button>
+                    <div className="row justify-content-end">
+                        <div className="col-12 d-flex justify-content-end">
+                            <Button className='norse-bold' onClick={() => props.setShow(true)}>Update</Button>
+                        </div>
+                    </div>
                 </li>
+                <li className="list-group-item"></li>
             </ul>
-            <div className="row justify-content-center">
-                <Button onClick={() => handleLogout()} variant='danger'>Logout</Button>
+            <div className="row">
+                <div className="col-12 d-flex justify-content-center">
+                    <Button className='norse-bold' onClick={() => handleLogout()} variant='danger'>Logout</Button>
+                </div>
             </div>
         </div>
         <UpdateGym users={props.users} show={props.show} setShow={props.setShow} />
