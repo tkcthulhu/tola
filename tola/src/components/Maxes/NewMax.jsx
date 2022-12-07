@@ -73,6 +73,7 @@ function NewMax(props) {
           onHide={handleClose}
           backdrop="static"
           keyboard={false}
+          className='norse-bold'
         >
           <Modal.Header closeButton>
             <Modal.Title>New Max</Modal.Title>
@@ -99,6 +100,7 @@ function NewMax(props) {
           <Modal.Footer>
             <Button 
               variant="danger"
+              className='lil-button norse-bold'
               onClick={() => {
                 postMax(props.user, exerciseList.current.value, weight.current.value, 1);
                 handleClose()

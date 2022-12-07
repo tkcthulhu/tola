@@ -4,6 +4,7 @@ import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 
 import './App.css';
 import { useGlobalState } from './context/GlobalState';
+import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import Header from './components/Header';
@@ -30,9 +31,6 @@ function App() {
   if (state.currentUser) {
     id = state.currentUser.user_id
   } 
-  // else {
-  //   navigate('/login')
-  // }
 
   useEffect(() => {
     axios.get(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/usersAPI/${id}`)
@@ -41,6 +39,7 @@ function App() {
 
   return (      
       <Routes>
+        <Route path='/tola' element={<Home />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/register" element={<Register />}/>
         <Route path="/user/" element={<Header users={users} />}>

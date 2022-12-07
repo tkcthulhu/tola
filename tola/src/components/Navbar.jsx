@@ -10,53 +10,61 @@ function Navbar(props) {
 
   return(
     <>
-      <ul className="nav nav-tabs">
+      <ul className="nav nav-tabs norse-bold">
         <li className="nav-item">
           <div 
             id='Dashboard' 
-            className={`nav-link ${location.pathname === '/tola/dashboard' ? 'active' : ''}`} 
+            className={`nav-link ${location.pathname === '/user/dashboard' ? 'active active-tab' : 'inactive'}`} 
             aria-current="page" 
             onClick={() => {
-              navigate('/tola/dashboard');
+              navigate('/user/dashboard');
             }}
             >
-            Home
+              <h3>
+                Home
+              </h3>
           </div>
         </li>
         <li className="nav-item">
           <div 
             id='Training' 
-            className={`nav-link ${location.pathname === '/tola/training' ? 'active' : ''}`} 
+            className={`nav-link ${location.pathname === '/user/training' ? 'active active-tab' : 'inactive'}`} 
             aria-current="page"
             onClick={() => {
-              navigate('/tola/training')
+              navigate('/user/training')
             }}
             >
-            Training
+              <h3>
+                Training
+              </h3>
           </div>
         </li>
         <li className="nav-item">
           <div 
             id='Maxes' 
-            className={`nav-link ${location.pathname === '/tola/maxes' ? 'active' : ''}`} 
+            className={`nav-link ${location.pathname === '/user/maxes' ? 'active active-tab' : 'inactive'}`} 
             aria-current="page" 
             onClick={() => {
-              navigate('/tola/maxes')
+              navigate('/user/maxes')
             }}
             >
-            Maxes
+              <h3>
+                Maxes
+              </h3>
           </div>
         </li>
         <li className="nav-item">
           <div 
             id='Programs' 
-            className={`nav-link ${location.pathname === '/tola/programs' ? 'active' : ''}`} 
+            className={`nav-link ${location.pathname === '/user/programs' ? 'active active-tab' : 'inactive'}`} 
             aria-current="page"
             onClick={() => {
-              navigate('/tola/programs')
+              navigate('/user/programs')
             }}
             >
-            Programs
+              <h3>
+                Programs
+              </h3>
           </div>
         </li>
       </ul>

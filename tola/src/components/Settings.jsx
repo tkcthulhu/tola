@@ -15,7 +15,7 @@ function Settings(props) {
     return(
         <>
             <h1>Settings</h1>
-            <Button variant='danger' onClick={() => handleLogout()}>Logout</Button>
+            <Button variant='danger' className='lil-button norse-bold' onClick={() => handleLogout()}>Logout</Button>
         </>
     )
 }

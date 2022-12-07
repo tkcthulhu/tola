@@ -48,6 +48,7 @@ function UpdateMax(props) {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        className='norse-bold'
       >
         <Modal.Header closeButton>
           <Modal.Title>{props.title} Max</Modal.Title>
@@ -63,6 +64,7 @@ function UpdateMax(props) {
         <Modal.Footer>
           <Button 
             variant="danger"
+            className='lil-button norse-bold'
             onClick={() => {
               postMax(props.user, props.exerciseId, weight.current.value, 1);
               deactivateOldMax(props.oldMax)

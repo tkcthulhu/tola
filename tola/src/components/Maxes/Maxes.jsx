@@ -33,15 +33,13 @@ function Maxes(props) {
         max_view.push(
             <li key={max.id} className="list-group-item">
                 <div className="row">
-                    <div className="col">
-                        {max.exercise}
-                    </div>
-                </div>
-                <div className="row">
                     <div className="col-9">
-                        <br /><p className="tab">{max.reps} Rep Max: {max.weight}</p><p className="tab">{max.date}</p>
+                        <h2>
+                            {max.exercise}
+                        </h2>
+                        <p className="tab">{max.reps} Rep Max: {max.weight}<br/>{max.date}</p>
                     </div>
-                    <div className="col-3">
+                    <div className="col-3 d-flex align-items-center">
                         <img
                             src={update}
                             alt=""
@@ -59,10 +57,15 @@ function Maxes(props) {
         )
     }
 
+    if (!max_view.length) {
+        max_view = [<h1>No maxes yet, let's get some numbers on the board!</h1>]
+    }
+
     return (
         <Layout>
             <div className="container page">
                 <ul className="list-group list-group-flush">
+                    <li className="list-group-item"></li>
                     {max_view}
                 </ul>
             </div>
@@ -72,6 +75,7 @@ function Maxes(props) {
                 variant="danger"
                 onClick={() => { props.setShowNewMax(true) }}
                 id="new-max-button"
+                className='norse-bold lil-button'
             >
                 Set a New Max
             </Button>
