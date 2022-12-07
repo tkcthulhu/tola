@@ -198,3 +198,7 @@ code {
 .lil-button {
   background-color: rgb(181, 0, 0) !important;
 }
+
+.cross-out {
+  text-decoration: line-through;
+}
