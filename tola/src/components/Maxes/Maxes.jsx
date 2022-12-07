@@ -57,6 +57,10 @@ function Maxes(props) {
         )
     }
 
+    if (!max_view.length) {
+        max_view = [<h1>No maxes yet, let's get some numbers on the board!</h1>]
+    }
+
     return (
         <Layout>
             <div className="container page">
@@ -71,7 +75,7 @@ function Maxes(props) {
                 variant="danger"
                 onClick={() => { props.setShowNewMax(true) }}
                 id="new-max-button"
-                className='norse-bold'
+                className='norse-bold lil-button'
             >
                 Set a New Max
             </Button>

@@ -7,9 +7,17 @@ import Button from 'react-bootstrap/Button'
 import axios from "axios"
 import Layout from "./Layout"
 
+//Need to fix a bug where if user doesn't have a max in the exercise the app crashes
+
 function Training(props) {
 
     let program = props.users.programs
+
+    if (!program) {
+        program = {
+            'id': ''
+        }
+    }
 
     const [index, setIndex] = useState(0);
 
@@ -24,6 +32,14 @@ function Training(props) {
             .get(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/user_programs/${program.id}`)
             .then((resp) => setTraining(resp.data))
     }, [])
+
+    if (!program.id) {
+        return(
+            <Layout>
+                <h1>Please add a program to start training!</h1>
+            </Layout>
+        )
+    }
 
     let myTraining = []
 
@@ -110,7 +126,7 @@ function Training(props) {
                             <h1 className="norse-bold">{program.program}</h1>
                         </div>
                         <div className="col-3 norse-bold">
-                            <Button variant="dark">Week</Button>
+                            <Button variant="">Week</Button>
                         </div>
                     </div>
                     <h6 className="tab">{program.coach}</h6>
