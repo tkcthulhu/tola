@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from "axios";
 import React from 'react';
+import { API_URL } from '../../services/auth.constants';
 
 function UpdateMax(props) {
 
@@ -17,7 +18,7 @@ function UpdateMax(props) {
 
   async function postMax(user, exercise, weight, reps) {
 
-    await axios.post(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/maxAPI/`, {
+    await axios.post(`${API_URL}/api/maxAPI/`, {
         "user": user,
         "exercise": exercise,
         "weight": weight,
@@ -29,7 +30,7 @@ function UpdateMax(props) {
 
   function deactivateOldMax(currentMax) {
         
-    axios.put(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/maxAPI/${currentMax}/`, {
+    axios.put(`${API_URL}/api/maxAPI/${currentMax}/`, {
         "id": currentMax,
         "active": false
         }

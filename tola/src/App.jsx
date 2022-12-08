@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import './App.css';
 import { useGlobalState } from './context/GlobalState';
@@ -14,17 +14,16 @@ import Dashboard from './components/Dashboard';
 import Training from './components/Training';
 import Maxes from './components/Maxes/Maxes';
 import Programs from './components/Programs';
+import { API_URL } from './services/auth.constants';
 
 function App() {
   const [users, setUsers] = useState([]);
   const [show, setShow] = useState(false);
   const [showNewMax, setShowNewMax] = useState(false)
 
-  const [ state, dispatch ] = useGlobalState();
+  const [ state, ] = useGlobalState();
 
   let location = useLocation();
-
-  let navigate = useNavigate()
 
   let id = ''
 
@@ -33,9 +32,9 @@ function App() {
   } 
 
   useEffect(() => {
-    axios.get(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/usersAPI/${id}`)
+    axios.get(`${API_URL}/api/usersAPI/${id}`)
       .then((resp) => setUsers(resp.data));
-  }, [show, showNewMax, location])
+  }, [show, showNewMax, location ])
 
   return (      
       <Routes>
@@ -46,7 +45,7 @@ function App() {
           <Route path="dashboard" element={<Dashboard users={users}/>} />
           <Route path="training" element={<Training users={users}/>} />
           <Route path="maxes" element={<Maxes users={users} show={show} setShow={setShow} showNewMax={showNewMax} setShowNewMax={setShowNewMax} />} />
-          <Route path="programs" element={<Programs />} />
+          <Route path="programs" element={<Programs users={users}/>} />
           <Route path="profile" element={<Profile users={users} show={show} setShow={setShow}/>} />
           <Route path="settings" element={<Settings />} />
         </Route>
