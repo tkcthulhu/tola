@@ -43,6 +43,22 @@ function Training(props) {
 
     let myTraining = []
 
+    function handleComplete(set, id) {
+        axios
+            .patch(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/user_set/${set}/`, {
+                "status": 2
+            })
+
+        document.getElementById(id).classList.add('cross-out')
+    }
+
+    function handleFailed(set) {
+        axios
+            .patch(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/user_set/${set}/`, {
+                "status": 3
+            })
+    }
+
     if (training) {  
 
         let program = training.program
@@ -69,12 +85,14 @@ function Training(props) {
                     
                     for (const set of sets) {
 
+                        let id = Date.now()
+
                         this_exercise.push(
                             <Card className="exercise-card">
                                 <Card.Body className="row exercise-body">
                                     <div className="col-6">
                                         <Card.Title className="d-flex justify-content-center">
-                                            <h3><strong>{set.percent}%</strong></h3>
+                                            <h3 id={id} className={set.set_status.status === 'Incomplete' ? '' : 'cross-out'}><strong>{set.percent}%</strong></h3>
                                         </Card.Title>
                                         <Card.Text className="d-flex justify-content-center">
                                             <h4>
@@ -85,8 +103,8 @@ function Training(props) {
                                         </Card.Text>
                                     </div>
                                     <ButtonGroup className="col-6" vertical>
-                                            <Button size="small" variant="dark">Complete</Button>
-                                            <Button className='lil-button' size="small" variant="danger">Failed</Button>
+                                            <Button size="small" variant="dark" onClick={() => handleComplete(set.set_status.id, id)}>Complete</Button>
+                                            <Button className='lil-button' size="small" variant="danger" onClick={() => handleFailed(set.set_status.id)}>Failed</Button>
                                     </ButtonGroup>
                                 </Card.Body>
                             </Card>
@@ -126,7 +144,7 @@ function Training(props) {
                             <h1 className="norse-bold">{program.program}</h1>
                         </div>
                         <div className="col-3 norse-bold">
-                            <Button variant="">Week</Button>
+                            <Button variant="dark">Week</Button>
                         </div>
                     </div>
                     <h6 className="tab">{program.coach}</h6>
