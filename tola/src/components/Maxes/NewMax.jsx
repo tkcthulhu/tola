@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import React from 'react';
+import { API_URL } from "../../services/auth.constants";
 
 function NewMax(props) {
 
@@ -20,7 +21,7 @@ function NewMax(props) {
   const [exercises, setExercises] = useState([])
 
   useEffect(() => {
-      axios.get(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/exerciseAPI/`)
+      axios.get(`${API_URL}/api/exerciseAPI/`)
       .then((resp) => setExercises(resp.data));
   }, [])
 
@@ -29,7 +30,7 @@ function NewMax(props) {
   };
 
   function postMax(user, exercise, weight, reps) {
-    axios.post(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/maxAPI/`, {
+    axios.post(`${API_URL}/api/maxAPI/`, {
         "user": user,
         "exercise": exercise,
         "weight": weight,

@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from "axios";
 import React from 'react';
+import { API_URL } from '../../services/auth.constants';
 
 function UpdateGym(props) {
 
@@ -18,7 +19,7 @@ function UpdateGym(props) {
 
 
     useEffect(() => {
-        axios.get(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/gymAPI/`)
+        axios.get(`${API_URL}/api/gymAPI/`)
             .then((resp) => setGyms(resp.data));
     }, [])
 
@@ -26,14 +27,14 @@ function UpdateGym(props) {
 
     function deactivateOldGym(currentGym) {
 
-        axios.put(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/usergymAPI/${currentGym}/`, {
+        axios.put(`${API_URL}/api/usergymAPI/${currentGym}/`, {
             "active": false
         })
 
     }
 
     useEffect(() => {
-        axios.get(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/usergymAPI/`)
+        axios.get(`${API_URL}/api/usergymAPI/`)
             .then((resp) => setUserGyms(resp.data));
     }, [])
 
@@ -56,7 +57,7 @@ function UpdateGym(props) {
         if (!currentGym) {
             console.log('new')
             axios
-                .post(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/usergymAPI/`, {
+                .post(`${API_URL}/api/usergymAPI/`, {
                     "user": user,
                     "gym": gym,
                     "active": true,
@@ -65,7 +66,7 @@ function UpdateGym(props) {
         } else {
             console.log('update')
             axios
-                .put(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/api/usergymAPI/${currentGym}/`, {
+                .put(`${API_URL}/api/usergymAPI/${currentGym}/`, {
                     "active": true,
             })
         }

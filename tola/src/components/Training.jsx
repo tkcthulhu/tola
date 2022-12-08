@@ -6,6 +6,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
 import axios from "axios"
 import Layout from "./Layout"
+import { API_URL } from "../services/auth.constants"
 
 //Need to fix a bug where if user doesn't have a max in the exercise the app crashes
 
@@ -29,7 +30,7 @@ function Training(props) {
 
     useEffect(() => {
         axios
-            .get(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/user_programs/${program.id}`)
+            .get(`${API_URL}/user_programs/${program.id}`)
             .then((resp) => setTraining(resp.data))
     }, [])
 
@@ -45,16 +46,15 @@ function Training(props) {
 
     function handleComplete(set, id) {
         axios
-            .patch(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/user_set/${set}/`, {
+            .patch(`${API_URL}/user_set/${set}/`, {
                 "status": 2
             })
-
         document.getElementById(id).classList.add('cross-out')
     }
 
     function handleFailed(set) {
         axios
-            .patch(`https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us77.gitpod.io/user_set/${set}/`, {
+            .patch(`${API_URL}/user_set/${set}/`, {
                 "status": 3
             })
     }
@@ -77,43 +77,46 @@ function Training(props) {
 
                 let this_session = []
 
+                let session_id = Date.now() * Math.random()
+
                 for (const exercise of exercises) {
 
                     let sets = exercise.sets
+                    
+                    let exercise_id = Date.now() * Math.random()
 
                     let this_exercise = []
                     
                     for (const set of sets) {
 
-                        let id = Date.now()
+                        let set_id = Date.now() * Math.random()
 
                         this_exercise.push(
-                            <Card className="exercise-card">
+                            <Card className="exercise-card" key={set_id}>
                                 <Card.Body className="row exercise-body">
                                     <div className="col-6">
                                         <Card.Title className="d-flex justify-content-center">
-                                            <h3 id={id} className={set.set_status.status === 'Incomplete' ? '' : 'cross-out'}><strong>{set.percent}%</strong></h3>
+                                            <h3 id={set_id} className={set.set_status.status === 'Incomplete' ? '' : 'cross-out'}><strong>{set.percent}%</strong></h3>
                                         </Card.Title>
-                                        <Card.Text className="d-flex justify-content-center">
+                                        <Card.Body className="d-flex justify-content-center">
                                             <h4>
                                             {set.weight} lbs
                                             <br/>
                                             <span className="d-flex justify-content-center">{set.num_of_reps} reps</span>
                                             </h4>
-                                        </Card.Text>
+                                        </Card.Body>
                                     </div>
                                     <ButtonGroup className="col-6" vertical>
-                                            <Button size="small" variant="dark" onClick={() => handleComplete(set.set_status.id, id)}>Complete</Button>
-                                            <Button className='lil-button' size="small" variant="danger" onClick={() => handleFailed(set.set_status.id)}>Failed</Button>
+                                            <Button size="small" variant="dark" onClick={() => handleComplete(set.set_status.id, set_id)}>Complete</Button>
+                                            <Button className='lil-button' size="small" variant="danger" onClick={() => handleFailed(set.set_status.id, set_id)}>Failed</Button>
                                     </ButtonGroup>
                                 </Card.Body>
                             </Card>
                         )
-
                     }
 
                     this_session.push(
-                        <Accordion.Item eventKey={i}>
+                        <Accordion.Item eventKey={i} key={exercise_id}>
                             <Accordion.Header><h2 className="">{exercise.exercise}</h2><br/><span className="tab">Sets: {(exercise.sets).length}</span></Accordion.Header>
                             <Accordion.Body className="row exercise-sets justify-content-center exercise-list">
                                 {this_exercise}
@@ -126,7 +129,7 @@ function Training(props) {
                 }
 
                 this_program.push(
-                    <Carousel.Item>
+                    <Carousel.Item key={session_id}>
                         <div className="container">
                             <p className="tab">Week: {session.week} <span className="tab">Session: {session.session}</span></p>
                             <Accordion defaultActiveKey={null} flush className="training-accordion">
@@ -154,9 +157,7 @@ function Training(props) {
                 </div>
             )
         }
-    
-
-        }
+    }
 
     return(
         <Layout>
