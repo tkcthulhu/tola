@@ -22,6 +22,10 @@ function Maxes(props) {
         return 0;
     })
 
+    let units = props.users.units
+
+    console.log(units)
+
     const handleShow = () => {
         props.setShow(true)
     };
@@ -64,6 +68,11 @@ function Maxes(props) {
     return (
         <Layout>
             <div className="container page">
+                <div className="row">
+                    <div className="col">
+                        <h1 className='norse-bold'>My Maxes</h1>
+                    </div>
+                </div>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item"></li>
                     {max_view}
