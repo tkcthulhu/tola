@@ -100,7 +100,16 @@ function Training(props) {
 
                         this_session.push(
                             <Accordion.Item eventKey={`${i + exercise_id}`} key={exercise_id}>
-                                <Accordion.Header><h2 className="">{exercise.exercise}</h2><br/><span className="tab">Sets: 0</span></Accordion.Header>
+                                <Accordion.Header>
+                                    <div className="container">
+                                        <div className="row">
+                                            <h2>{exercise.exercise}</h2>
+                                        </div>
+                                        <div className="row">
+                                            <span className="tab">Sets: 0</span>
+                                        </div>
+                                    </div>
+                                </Accordion.Header>
                                 <Accordion.Body className="row exercise-sets justify-content-center exercise-list">
                                     {this_exercise}
                                 </Accordion.Body>
@@ -140,11 +149,13 @@ function Training(props) {
                     this_session.push(
                         <Accordion.Item eventKey={i} key={exercise_id}>
                             <Accordion.Header>
-                                <div className="row">
-                                    <h2>{exercise.exercise}</h2>
-                                </div>
-                                <div className="row">
-                                    <span className="tab">Sets: {(exercise.sets).length}</span>
+                                <div className="container">
+                                    <div className="row">
+                                        <h2>{exercise.exercise}</h2>
+                                    </div>
+                                    <div className="row">
+                                        <span className="tab">Sets: {(exercise.sets).length}</span>
+                                    </div>
                                 </div>
                             </Accordion.Header>
                             <Accordion.Body className="row exercise-sets justify-content-center exercise-list">
