@@ -20,7 +20,7 @@ const Register = () => {
     const handleChange = (key, value) => {
       setUser({
         ...user,
-        [key]: value
+        [key]: value,
       })
     }
 
@@ -32,7 +32,7 @@ const Register = () => {
 
     return (
       <div className="c-form container register-form">
-        <img src={logo} alt="logo" className="ratio"/>
+        <img src={logo} alt="logo" className="ratio" onClick={() => navigate('/')}/>
 
         <form onSubmit={handleRegister}>
           <div className="row justify-content-center">
@@ -109,12 +109,12 @@ const Register = () => {
           </div>
           <br/>
           <div className="row justify-content-center">
-              <label htmlFor="birthDate" className="norse-bold">Birthdate:</label>
+              <label htmlFor="birthday" className="norse-bold">Birthdate:</label>
               <br/>
               <input 
-                  type="date"             
-                  id="last_name"
-                  name="lname"
+                  type="birthday"             
+                  id="birthday"
+                  name="birthday"
                   required
                   onChange={(e) => handleChange('birthday', e.target.value)}
               />

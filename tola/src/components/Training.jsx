@@ -28,13 +28,21 @@ function Training(props) {
         setIndex(selectedIndex);
       };
 
+    let program_id = ''
+
+    if(!program.id){
+        program_id = ''
+    } else {
+        program_id = program.id
+    }
+
     useEffect(() => {
         axios
-            .get(`${API_URL}/user_programs/${program.id}`)
+            .get(`${API_URL}/user_programs/${program_id}`)
             .then((resp) => setTraining(resp.data))
     }, [])
 
-    if (!program.id) {
+    if (!program_id) {
         return(
             <Layout>
                 <h1>Please add a program to start training!</h1>
