@@ -51,7 +51,7 @@ function Programs(props) {
         my_program = props.users.programs.name
 
         my_program =
-        <Accordion.Item eventkey={my_program}>
+        <Accordion.Item eventKey={my_program}>
             <Accordion.Header>
                 <h3 className='norse-bold'>
                     {my_program}
@@ -75,7 +75,7 @@ function Programs(props) {
         
         for (const program of availible_programs_arr){
             availible_programs.push(
-                <Accordion.Item eventkey={program.id}>
+                <Accordion.Item eventKey={program.id}>
                     <Accordion.Header>
                         <h3 className='norse-bold'>
                             {program.name}
@@ -96,7 +96,7 @@ function Programs(props) {
 
     return(
         <Layout>
-            <div className="container">
+            <div className="container page">
                 <div className="row">
                     <div className="col">
                         <h1 className='norse-bold'>My Programs</h1>
