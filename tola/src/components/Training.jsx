@@ -94,6 +94,20 @@ function Training(props) {
                     let exercise_id = Date.now() * Math.random()
 
                     let this_exercise = []
+
+                    if (typeof sets == 'string') {
+                        this_exercise = sets
+
+                        this_session.push(
+                            <Accordion.Item eventKey={`${i + exercise_id}`} key={exercise_id}>
+                                <Accordion.Header><h2 className="">{exercise.exercise}</h2><br/><span className="tab">Sets: 0</span></Accordion.Header>
+                                <Accordion.Body className="row exercise-sets justify-content-center exercise-list">
+                                    {this_exercise}
+                                </Accordion.Body>
+                            </Accordion.Item>)
+
+                        continue
+                    }
                     
                     for (const set of sets) {
 
