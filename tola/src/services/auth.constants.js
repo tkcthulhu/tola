@@ -1,3 +1,4 @@
+// export const API_URL = "https://double-vision-371020.uk.r.appspot.com";
 export const API_URL = "https://8000-tkcthulhu-tolaapi-g6ziba3two5.ws-us78.gitpod.io";
 export const LOGIN_ENDPOINT = "/api/user/login/"
 export const REGISTER_ENDPOINT = "/api/user/signup/"

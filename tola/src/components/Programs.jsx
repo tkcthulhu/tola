@@ -16,7 +16,7 @@ function Programs(props) {
         .then((resp) => setPrograms(resp.data));
     }, [])
 
-    let my_program = props.users.programs.name
+    let my_program = ''
 
     let availible_programs = []
 
@@ -31,6 +31,11 @@ function Programs(props) {
 
     async function handleLeave(id) {
 
+        let payload = {
+            url: `/api/updateUserProgram/${id}/`,
+            method: "DELETE",
+          };
+          await request(payload);
     }
 
     async function handleJoin(id) {
@@ -40,6 +45,29 @@ function Programs(props) {
             method: "POST",
         };
         await request(payload)
+    }
+
+    if (props.users.programs.name) {
+        my_program = props.users.programs.name
+
+        my_program =
+        <Accordion.Item eventkey={my_program}>
+            <Accordion.Header>
+                <h3 className='norse-bold'>
+                    {my_program}
+                </h3>
+            </Accordion.Header>
+            <Accordion.Body>
+                <div className="row">
+                    <div className="col">
+                        <Button variant="dark" onClick={() => handleReset(props.users.programs.program_id)}><strong>RESTART PROGRAM</strong></Button>
+                    </div>
+                    <div className="col">
+                        <Button variant="danger" className="lil-button" onClick={() => handleLeave(props.users.programs.program_id)}><strong>LEAVE PROGRAM</strong></Button>
+                    </div>
+                </div>
+            </Accordion.Body>
+        </Accordion.Item>
     }
 
     if (programs) {
@@ -76,23 +104,7 @@ function Programs(props) {
                 </div>
                 <div className="row justify-content-center">
                     <Accordion defaultActiveKey={null} flush>
-                        <Accordion.Item eventkey={my_program}>
-                            <Accordion.Header>
-                                <h3 className='norse-bold'>
-                                    {my_program}
-                                </h3>
-                            </Accordion.Header>
-                            <Accordion.Body>
-                                <div className="row">
-                                    <div className="col">
-                                        <Button variant="dark" onClick={() => handleReset(props.users.programs.program_id)}><strong>RESTART PROGRAM</strong></Button>
-                                    </div>
-                                    <div className="col">
-                                        <Button variant="danger" className="lil-button"><strong>LEAVE PROGRAM</strong></Button>
-                                    </div>
-                                </div>
-                            </Accordion.Body>
-                        </Accordion.Item>
+                        {my_program}
                     </Accordion>
                 </div>
                 <div className="row">

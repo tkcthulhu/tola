@@ -35,10 +35,10 @@ function Login(props) {
     <div className="container" id='login-cont'> 
       <div className="row justify-content-center">
         <div className="col-12 d-flex justify-content-center">
-          <img src={logoText} alt="Tola" />
+          <img src={logoText} alt="Tola" onClick={() => navigate('/')} />
         </div>
         <div className="col-7">
-          <img src={logo} alt='logo' className='ratio' />
+          <img src={logo} alt='logo' onClick={() => navigate('/')} className='ratio' />
         </div>
         <div className="col-12 d-flex justify-content-center space">
           <h4 className='italics'>To Endure</h4>
