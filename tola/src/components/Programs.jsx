@@ -75,7 +75,7 @@ function Programs(props) {
         
         for (const program of availible_programs_arr){
             availible_programs.push(
-                <Accordion.Item eventkey={program.name}>
+                <Accordion.Item eventkey={program.id}>
                     <Accordion.Header>
                         <h3 className='norse-bold'>
                             {program.name}
