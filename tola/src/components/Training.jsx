@@ -20,6 +20,14 @@ function Training(props) {
         }
     }
 
+    let user_units = props.users.units
+
+    let units = 1
+    
+    if (!user_units) {
+        units = 2.2
+    }
+
     const [index, setIndex] = useState(0);
 
     const [training, setTraining] = useState([])
@@ -94,6 +102,29 @@ function Training(props) {
                     let exercise_id = Date.now() * Math.random()
 
                     let this_exercise = []
+
+                    if (typeof sets == 'string') {
+                        this_exercise = sets
+
+                        this_session.push(
+                            <Accordion.Item eventKey={`${i + exercise_id}`} key={exercise_id}>
+                                <Accordion.Header>
+                                    <div className="container">
+                                        <div className="row">
+                                            <h2>{exercise.exercise}</h2>
+                                        </div>
+                                        <div className="row">
+                                            <span className="tab">Sets: 0</span>
+                                        </div>
+                                    </div>
+                                </Accordion.Header>
+                                <Accordion.Body className="row exercise-sets justify-content-center exercise-list">
+                                    {this_exercise}
+                                </Accordion.Body>
+                            </Accordion.Item>)
+
+                        continue
+                    }
                     
                     for (const set of sets) {
 
@@ -108,7 +139,7 @@ function Training(props) {
                                         </Card.Title>
                                         <Card.Body className="d-flex justify-content-center">
                                             <h4>
-                                            {set.weight} lbs
+                                            {Math.round(set.weight/units)} {user_units ? 'lbs' : 'kg'}
                                             <br/>
                                             <span className="d-flex justify-content-center">{set.num_of_reps} reps</span>
                                             </h4>
@@ -125,7 +156,16 @@ function Training(props) {
 
                     this_session.push(
                         <Accordion.Item eventKey={i} key={exercise_id}>
-                            <Accordion.Header><h2 className="">{exercise.exercise}</h2><br/><span className="tab">Sets: {(exercise.sets).length}</span></Accordion.Header>
+                            <Accordion.Header>
+                                <div className="container">
+                                    <div className="row">
+                                        <h2>{exercise.exercise}</h2>
+                                    </div>
+                                    <div className="row">
+                                        <span className="tab">Sets: {(exercise.sets).length}</span>
+                                    </div>
+                                </div>
+                            </Accordion.Header>
                             <Accordion.Body className="row exercise-sets justify-content-center exercise-list">
                                 {this_exercise}
                             </Accordion.Body>
