@@ -41,7 +41,7 @@ function NewMax(props) {
     axios.post(`${API_URL}/api/maxAPI/`, {
         "user": user,
         "exercise": exercise,
-        "weight": Math.round(weight/units),
+        "weight": Math.round(weight*units),
         "num_of_reps": reps,
         "active": true
     })

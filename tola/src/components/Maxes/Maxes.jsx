@@ -82,8 +82,8 @@ function Maxes(props) {
                     {max_view}
                 </ul>
             </div>
-            <NewMax show={props.showNewMax} setShow={props.setShowNewMax} user={props.users.id} maxes={maxes} />
-            <UpdateMax show={props.show} setShow={props.setShow} title={exercise} exerciseId={exerciseId} user={props.users.id} oldMax={oldMax} />
+            <NewMax users={props.users} show={props.showNewMax} setShow={props.setShowNewMax} user={props.users.id} maxes={maxes} />
+            <UpdateMax users={props.users} show={props.show} setShow={props.setShow} title={exercise} exerciseId={exerciseId} user={props.users.id} oldMax={oldMax} />
             <Button
                 variant="danger"
                 onClick={() => { props.setShowNewMax(true) }}

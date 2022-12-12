@@ -112,7 +112,7 @@ const Register = () => {
               <label htmlFor="birthday" className="norse-bold">Birthdate:</label>
               <br/>
               <input 
-                  type="birthday"             
+                  type="date"             
                   id="birthday"
                   name="birthday"
                   required
@@ -127,6 +127,7 @@ const Register = () => {
                   type="number"            
                   id="weight"
                   name="weight"
+                  min="1"
                   required
                   onChange={(e) => handleChange('weight', e.target.value)}  />
           </div>
