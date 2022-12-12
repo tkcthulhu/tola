@@ -5,6 +5,7 @@ import AuthService from '../services/auth.service'
 import { useNavigate } from 'react-router-dom'
 import { API_URL } from '../services/auth.constants';
 import axios from 'axios'
+import { toast, Toaster } from 'react-hot-toast';
 
 function Settings(props) {
 
@@ -27,6 +28,7 @@ function Settings(props) {
                 {
                     'units': (unit === 'Imperial')
                 })
+            toast(`Units have been changed to ${unit}`)
     }
 
     return(
@@ -70,6 +72,7 @@ function Settings(props) {
                     <Button variant='danger' className='lil-button norse-bold' onClick={() => handleLogout()}>Logout</Button>
                 </div>
             </div>
+            <Toaster/>
         </div>
     )
 }

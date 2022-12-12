@@ -3,6 +3,7 @@ import {
     REFRESH_ENDPOINT,
     REGISTER_ENDPOINT,
   } from './auth.constants'
+import toast from 'react-hot-toast';
   
   import request from "./api.request";
   
@@ -50,7 +51,7 @@ import {
       })
       .then(() => {
         this.login(username, password)
-      })
+      }).catch(error => toast.error(error))
     }
   
     setToken(resp) {

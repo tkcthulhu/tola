@@ -6,6 +6,7 @@ import Button from "react-bootstrap/esm/Button";
 import jwtDecode from "jwt-decode";
 import logo from '../img/logo.png'
 import logoText from '../img/tola.png'
+import toast, { Toaster } from "react-hot-toast";
 
 function Login(props) {
 
@@ -28,7 +29,7 @@ function Login(props) {
           currentUser: data
         })
         navigate('/user/dashboard')
-      });
+      }).catch((error) => toast.error('Username or password incorrect'));
   }
 
   return(
@@ -75,6 +76,7 @@ function Login(props) {
           <p className="mt-5 mb-3 text-muted">©2022</p>
         </form>
       </main>
+      <Toaster/>
     </div>
   )
 }

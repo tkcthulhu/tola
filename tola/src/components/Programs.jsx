@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import toast, { Toaster } from 'react-hot-toast';
 
 import axios from 'axios'
 import Layout from "./Layout"
@@ -26,7 +27,12 @@ function Programs(props) {
             url: `/api/updateUserProgram/${id}/`,
             method: "PATCH",
           };
-          await request(payload);
+          try {
+            await request(payload);
+              toast.success('Program has been reset successfully')
+            } catch {
+              toast.error('Failed')
+            }
     }
 
     async function handleLeave(id) {
@@ -35,7 +41,12 @@ function Programs(props) {
             url: `/api/updateUserProgram/${id}/`,
             method: "DELETE",
           };
-          await request(payload);
+          try {
+            await request(payload);
+              toast.success('You have left this program')
+            } catch {
+              toast.error('Failed')
+            }
     }
 
     async function handleJoin(id) {
@@ -44,7 +55,12 @@ function Programs(props) {
             url: `/api/addUserToProgram/${id}/`,
             method: "POST",
         };
-        await request(payload)
+        try {
+            await request(payload);
+              toast.success('You have joined this program')
+            } catch {
+              toast.error('There has been an error')
+            }
     }
 
     if (props.users.programs.name) {
@@ -118,6 +134,7 @@ function Programs(props) {
                     </Accordion>
                 </div>
             </div>
+            <Toaster/>
         </Layout>
     )
 }
