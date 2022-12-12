@@ -20,6 +20,14 @@ function Training(props) {
         }
     }
 
+    let user_units = props.users.units
+
+    let units = 1
+    
+    if (!user_units) {
+        units = 2.2
+    }
+
     const [index, setIndex] = useState(0);
 
     const [training, setTraining] = useState([])
@@ -131,7 +139,7 @@ function Training(props) {
                                         </Card.Title>
                                         <Card.Body className="d-flex justify-content-center">
                                             <h4>
-                                            {set.weight} lbs
+                                            {Math.round(set.weight/units)} {user_units ? 'lbs' : 'kg'}
                                             <br/>
                                             <span className="d-flex justify-content-center">{set.num_of_reps} reps</span>
                                             </h4>

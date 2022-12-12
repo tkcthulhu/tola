@@ -22,9 +22,13 @@ function Maxes(props) {
         return 0;
     })
 
-    let units = props.users.units
+    let user_units = props.users.units
 
-    console.log(units)
+    let units = 1
+    
+    if (!user_units) {
+        units = 2.2
+    }
 
     const handleShow = () => {
         props.setShow(true)
@@ -41,7 +45,7 @@ function Maxes(props) {
                         <h2>
                             {max.exercise}
                         </h2>
-                        <p className="tab">{max.reps} Rep Max: {max.weight}<br/>{max.date}</p>
+                        <p className="tab">{max.reps} Rep Max: {Math.round(max.weight/units)}{user_units ? 'lbs' : 'kg'}<br/>{max.date}</p>
                     </div>
                     <div className="col-3 d-flex align-items-center">
                         <img

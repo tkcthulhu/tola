@@ -3,15 +3,30 @@ import ButtonGroup from 'react-bootstrap/esm/ButtonGroup';
 import ListGroup from 'react-bootstrap/ListGroup'
 import AuthService from '../services/auth.service'
 import { useNavigate } from 'react-router-dom'
+import { API_URL } from '../services/auth.constants';
+import axios from 'axios'
 
 function Settings(props) {
 
     let navigate = useNavigate();
 
+    let units = props.users.units
+
+    console.log(units)
+
     const handleLogout = () => {
         AuthService
             .logout()
         navigate("/login")
+    }
+
+    const handleUnitChange = (unit) => {
+        axios
+            .patch(
+                `${API_URL}/users/${props.users.id}/`,
+                {
+                    'units': (unit === 'Imperial')
+                })
     }
 
     return(
@@ -29,8 +44,20 @@ function Settings(props) {
                         </div>
                         <div className="col-5">
                             <ButtonGroup size="sm">
-                                <Button variant='dark'>Imperial</Button>
-                                <Button variant='danger' className='lil-button'>Metric</Button>
+                                <Button 
+                                    variant={`${units ? 'danger' : 'dark'}`} 
+                                    className={`${units ? "lil-button" : ""}`}
+                                    onClick={() => handleUnitChange('Imperial')}
+                                >
+                                    Imperial
+                                </Button>
+                                <Button 
+                                    variant={`${units ? 'dark' : 'danger'}`} 
+                                    className={`${units ? "" : "lil-button"}`}
+                                    onClick={() => handleUnitChange('Metric')}
+                                >
+                                    Metric
+                                </Button>
                             </ButtonGroup>
                         </div>
                     </div>

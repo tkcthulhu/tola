@@ -13,6 +13,14 @@ function NewMax(props) {
     return () => setValue((value) => v + 1);
   }
 
+  let user_units = props.users.units
+
+  let units = 1
+  
+  if (!user_units) {
+      units = 2.2
+  }
+
   const forceUpdate = useForceUpdate()
 
   const weight = React.useRef(null);
@@ -33,7 +41,7 @@ function NewMax(props) {
     axios.post(`${API_URL}/api/maxAPI/`, {
         "user": user,
         "exercise": exercise,
-        "weight": weight,
+        "weight": Math.round(weight/units),
         "num_of_reps": reps,
         "active": true
     })
