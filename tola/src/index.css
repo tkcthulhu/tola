@@ -203,3 +203,6 @@ code {
   text-decoration: line-through;
 }
 
+input {
+  max-width: 75vw !important;
+}

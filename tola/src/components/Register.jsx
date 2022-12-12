@@ -36,7 +36,7 @@ const Register = () => {
 
         <form onSubmit={handleRegister}>
           <div className="row justify-content-center">
-            <label htmlFor="username" className="norse-bold">Username:</label>
+            <label htmlFor="username" className="tab norse-bold">Username:</label>
             <br/>
             <input
               type="text"
@@ -48,7 +48,7 @@ const Register = () => {
           </div>
           <br/>
           <div className="row justify-content-center">
-            <label htmlFor="email" className="norse-bold">Email:</label>
+            <label htmlFor="email" className="tab norse-bold">Email:</label>
             <br/>
             <input
               type="text"
@@ -60,7 +60,7 @@ const Register = () => {
           </div>
           <br/>
           <div className="row justify-content-center">
-            <label htmlFor="pass" className="norse-bold">Password (8 characters minimum):</label>
+            <label htmlFor="pass" className="tab norse-bold">Password (8 characters minimum):</label>
             <br/>
             <input
               type="password"
@@ -73,7 +73,7 @@ const Register = () => {
           </div>
           <br/>
           <div className="row justify-content-center">
-            <label htmlFor="passConf" className="norse-bold">Confirm Password:</label>
+            <label htmlFor="passConf" className="tab norse-bold">Confirm Password:</label>
             <br/>
             <input
               type="password"
@@ -85,7 +85,7 @@ const Register = () => {
           </div>
           <br/>
           <div className="row justify-content-center">
-            <label htmlFor="firstName" className="norse-bold">First Name:</label>
+            <label htmlFor="firstName" className="tab norse-bold">First Name:</label>
             <br/>
             <input
               type="text"
@@ -97,7 +97,7 @@ const Register = () => {
           </div>
           <br/>
           <div className="row justify-content-center">
-              <label htmlFor="lastName" className="norse-bold">Last Name:</label>
+              <label htmlFor="lastName" className="tab norse-bold">Last Name:</label>
               <br/>
               <input
                   type="text"
@@ -109,7 +109,7 @@ const Register = () => {
           </div>
           <br/>
           <div className="row justify-content-center">
-              <label htmlFor="birthday" className="norse-bold">Birthdate:</label>
+              <label htmlFor="birthday" className="tab norse-bold">Birthdate:</label>
               <br/>
               <input 
                   type="date"             
@@ -121,7 +121,7 @@ const Register = () => {
           </div>
           <br/>
           <div className="row justify-content-center">
-              <label htmlFor="weight" className="norse-bold">Weigth:</label>
+              <label htmlFor="weight" className="tab norse-bold">Weigth:</label>
               <br/>
               <input 
                   type="number"            
@@ -133,7 +133,7 @@ const Register = () => {
           </div>
           <br/>
           <div className="row justify-content-center">
-              <label htmlFor="Coach" className="norse-bold">Are you a Coach?</label>
+              <label htmlFor="Coach" className="tab norse-bold">Are you a Coach?</label>
               <br/>
               <input 
                   type="checkbox" 
