@@ -26,8 +26,13 @@ const Register = () => {
 
     const handleRegister = (e) => {
       e.preventDefault();
-      AuthService.register(user)
-      navigate('/login')
+
+      try{
+        AuthService.register(user)
+        navigate('/login')
+      }catch{
+        navigate('/register')
+      }
     }
 
     return (

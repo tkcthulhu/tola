@@ -31,8 +31,6 @@ function App() {
     id = state.currentUser.user_id
   } 
 
-  console.log(state.currentUser)
-
   useEffect(() => {
     axios.get(`${API_URL}/api/usersAPI/${id}`, {
       "headers": {

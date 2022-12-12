@@ -37,9 +37,9 @@ function Profile(props) {
                 <li className="list-group-item">
                     Last Name: {props.users.last_name}
                 </li>
-                <li className="list-group-item">
+                {/* <li className="list-group-item">
                     Birthdate: {props.users.birthday}
-                </li>
+                </li> */}
                 <li className="list-group-item">
                     Email: {props.users.email}
                 </li>

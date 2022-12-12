@@ -1,20 +1,31 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import update from '../../img/update-button.png'
+import axios from 'axios'
 import UpdateMax from './UpdateMax'
 import NewMax from './NewMax'
 import Button from 'react-bootstrap/esm/Button'
 import './maxes.css'
 import Layout from '../Layout'
 import { useGlobalState } from '../../context/GlobalState'
+import { API_URL } from '../../services/auth.constants'
 
 function Maxes(props) {
 
+    const [userMaxes, setUserMaxes] = useState([])
     const [exercise, setExercise] = useState('')
     const [exerciseId, setExerciseId] = useState('')
     const [oldMax, setOldMax] = useState('')
     const [ state, ] = useGlobalState();
 
-    let maxes = props.users.maxes ? [...props.users.maxes] : []
+    useEffect(() => {
+        axios.get(`${API_URL}/api/usersAPI/${state.currentUser.user_id}`, {
+          "headers": {
+              "Authorization": `Bearer ${state.currentUserToken}`
+          }})
+          .then((resp) => setUserMaxes(resp.data.maxes));
+      }, [props.show, props.showNewMax, state.currentUser.user_id ])
+
+    let maxes = userMaxes ? [...userMaxes] : []
 
     maxes = maxes.sort((a, b) => {
         if (a.exercise < b.exercise)

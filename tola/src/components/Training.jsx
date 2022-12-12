@@ -5,11 +5,15 @@ import Carousel from 'react-bootstrap/Carousel'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
 import axios from "axios"
+import { useLocation } from "react-router-dom"
+
 import Layout from "./Layout"
 import { API_URL } from "../services/auth.constants"
 import { useGlobalState } from '../context/GlobalState';
 
 function Training(props) {
+
+    let location = useLocation()
 
     let program = props.users.programs
     const [ state, ] = useGlobalState();
@@ -51,7 +55,7 @@ function Training(props) {
                     "Authorization": `Bearer ${state.currentUserToken}`
                 }})
             .then((resp) => setTraining(resp.data))
-    }, [])
+    }, [program_id, location, state.currentUserToken])
 
     if (!program_id) {
         return(

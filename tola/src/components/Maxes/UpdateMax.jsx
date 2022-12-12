@@ -76,6 +76,7 @@ function UpdateMax(props) {
           <input 
             type="number" 
             ref={weight}
+            placeholder={user_units ? 'lbs' : 'kg'}
           />
         </Modal.Body>
         <Modal.Footer>
