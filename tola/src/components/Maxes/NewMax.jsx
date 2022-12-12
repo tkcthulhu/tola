@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import React from 'react';
 import { API_URL } from "../../services/auth.constants";
+import { useGlobalState } from '../../context/GlobalState';
 
 function NewMax(props) {
 
@@ -14,6 +15,7 @@ function NewMax(props) {
   }
 
   let user_units = props.users.units
+  const [ state, ] = useGlobalState();
 
   let units = 1
   
@@ -29,7 +31,10 @@ function NewMax(props) {
   const [exercises, setExercises] = useState([])
 
   useEffect(() => {
-      axios.get(`${API_URL}/api/exerciseAPI/`)
+      axios.get(`${API_URL}/api/exerciseAPI/`, {
+        "headers": {
+            "Authorization": `Bearer ${state.currentUserToken}`
+        }})
       .then((resp) => setExercises(resp.data));
   }, [])
 
@@ -44,7 +49,10 @@ function NewMax(props) {
         "weight": Math.round(weight*units),
         "num_of_reps": reps,
         "active": true
-    })
+    }, {
+      "headers": {
+          "Authorization": `Bearer ${state.currentUserToken}`
+      }})
     .catch((err) => console.log(err));
   }
 

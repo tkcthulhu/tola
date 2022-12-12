@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import axios from "axios";
 import React from 'react';
 import { API_URL } from '../../services/auth.constants';
+import { useGlobalState } from '../../context/GlobalState';
 
 function UpdateGym(props) {
 
@@ -16,10 +17,14 @@ function UpdateGym(props) {
     const gymList = useRef(null)
     const [gyms, setGyms] = useState([])
     const [userGyms, setUserGyms] = useState([])
+    const [ state, ] = useGlobalState();
 
 
     useEffect(() => {
-        axios.get(`${API_URL}/api/gymAPI/`)
+        axios.get(`${API_URL}/api/gymAPI/`, {
+            "headers": {
+                "Authorization": `Bearer ${state.currentUserToken}`
+            }})
             .then((resp) => setGyms(resp.data));
     }, [])
 
@@ -29,12 +34,18 @@ function UpdateGym(props) {
 
         axios.put(`${API_URL}/api/usergymAPI/${currentGym}/`, {
             "active": false
-        })
+        }, {
+            "headers": {
+                "Authorization": `Bearer ${state.currentUserToken}`
+            }})
 
     }
 
     useEffect(() => {
-        axios.get(`${API_URL}/api/usergymAPI/`)
+        axios.get(`${API_URL}/api/usergymAPI/`, {
+            "headers": {
+                "Authorization": `Bearer ${state.currentUserToken}`
+            }})
             .then((resp) => setUserGyms(resp.data));
     }, [])
 
@@ -61,14 +72,20 @@ function UpdateGym(props) {
                     "user": user,
                     "gym": gym,
                     "active": true,
-                })
+                }, {
+                    "headers": {
+                        "Authorization": `Bearer ${state.currentUserToken}`
+                    }})
             .catch((err) => console.log(err + ' it\'s this one officer'));
         } else {
             console.log('update')
             axios
                 .put(`${API_URL}/api/usergymAPI/${currentGym}/`, {
                     "active": true,
-            })
+            }, {
+                "headers": {
+                    "Authorization": `Bearer ${state.currentUserToken}`
+                }})
         }
 
     }

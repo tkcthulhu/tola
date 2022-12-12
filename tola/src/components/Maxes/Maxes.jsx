@@ -5,12 +5,14 @@ import NewMax from './NewMax'
 import Button from 'react-bootstrap/esm/Button'
 import './maxes.css'
 import Layout from '../Layout'
+import { useGlobalState } from '../../context/GlobalState'
 
 function Maxes(props) {
 
     const [exercise, setExercise] = useState('')
     const [exerciseId, setExerciseId] = useState('')
     const [oldMax, setOldMax] = useState('')
+    const [ state, ] = useGlobalState();
 
     let maxes = props.users.maxes ? [...props.users.maxes] : []
 

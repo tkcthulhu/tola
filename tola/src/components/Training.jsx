@@ -7,12 +7,12 @@ import Button from 'react-bootstrap/Button'
 import axios from "axios"
 import Layout from "./Layout"
 import { API_URL } from "../services/auth.constants"
-
-//Need to fix a bug where if user doesn't have a max in the exercise the app crashes
+import { useGlobalState } from '../context/GlobalState';
 
 function Training(props) {
 
     let program = props.users.programs
+    const [ state, ] = useGlobalState();
 
     if (!program) {
         program = {
@@ -46,7 +46,10 @@ function Training(props) {
 
     useEffect(() => {
         axios
-            .get(`${API_URL}/user_programs/${program_id}`)
+            .get(`${API_URL}/user_programs/${program_id}`, {
+                "headers": {
+                    "Authorization": `Bearer ${state.currentUserToken}`
+                }})
             .then((resp) => setTraining(resp.data))
     }, [])
 
@@ -64,7 +67,10 @@ function Training(props) {
         axios
             .patch(`${API_URL}/user_set/${set}/`, {
                 "status": 2
-            })
+            }, {
+                "headers": {
+                    "Authorization": `Bearer ${state.currentUserToken}`
+                }})
         document.getElementById(id).classList.add('cross-out')
     }
 
@@ -72,7 +78,10 @@ function Training(props) {
         axios
             .patch(`${API_URL}/user_set/${set}/`, {
                 "status": 3
-            })
+            }, {
+                "headers": {
+                    "Authorization": `Bearer ${state.currentUserToken}`
+                }})
     }
 
     if (training) {  

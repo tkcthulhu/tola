@@ -3,6 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import axios from "axios";
 import React from 'react';
 import { API_URL } from '../../services/auth.constants';
+import { useGlobalState } from '../../context/GlobalState';
 
 function UpdateMax(props) {
 
@@ -13,6 +14,7 @@ function UpdateMax(props) {
   }
 
   let forceUpdate = useForceUpdate()
+  const [ state, ] = useGlobalState();
 
   const weight = React.useRef(null);
 
@@ -32,7 +34,10 @@ function UpdateMax(props) {
         "weight": Math.round(weight*units),
         "num_of_reps": reps,
         "active": true
-    })
+    }, {
+      "headers": {
+          "Authorization": `Bearer ${state.currentUserToken}`
+      }})
     .catch((err) => console.log(err));
   }
 
@@ -41,7 +46,10 @@ function UpdateMax(props) {
     axios.put(`${API_URL}/api/maxAPI/${currentMax}/`, {
         "id": currentMax,
         "active": false
-        }
+        }, {
+          "headers": {
+              "Authorization": `Bearer ${state.currentUserToken}`
+          }}
     )
 
   }

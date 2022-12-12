@@ -6,10 +6,12 @@ import { useNavigate } from 'react-router-dom'
 import { API_URL } from '../services/auth.constants';
 import axios from 'axios'
 import { toast, Toaster } from 'react-hot-toast';
+import { useGlobalState } from '../context/GlobalState';
 
 function Settings(props) {
 
     let navigate = useNavigate();
+    const [ state, ] = useGlobalState();
 
     let units = props.users.units
 
@@ -27,7 +29,10 @@ function Settings(props) {
                 `${API_URL}/users/${props.users.id}/`,
                 {
                     'units': (unit === 'Imperial')
-                })
+                }, {
+                    "headers": {
+                        "Authorization": `Bearer ${state.currentUserToken}`
+                    }})
             toast(`Units have been changed to ${unit}`)
     }
 

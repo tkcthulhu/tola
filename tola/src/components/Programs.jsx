@@ -7,13 +7,18 @@ import Accordion from 'react-bootstrap/Accordion'
 import Button from "react-bootstrap/esm/Button"
 import request from '../services/api.request'
 import { API_URL } from '../services/auth.constants'
+import { useGlobalState } from '../context/GlobalState';
 
 function Programs(props) {
 
     const [programs, setPrograms] = useState([])
+    const [ state, ] = useGlobalState();
 
     useEffect(() => {
-        axios.get(`${API_URL}/programs/`)
+        axios.get(`${API_URL}/programs/`, {
+            "headers": {
+                "Authorization": `Bearer ${state.currentUserToken}`
+            }})
         .then((resp) => setPrograms(resp.data));
     }, [])
 
