@@ -47,7 +47,7 @@ function App() {
           <Route path="maxes" element={<Maxes users={users} show={show} setShow={setShow} showNewMax={showNewMax} setShowNewMax={setShowNewMax} />} />
           <Route path="programs" element={<Programs users={users}/>} />
           <Route path="profile" element={<Profile users={users} show={show} setShow={setShow}/>} />
-          <Route path="settings" element={<Settings />} />
+          <Route path="settings" element={<Settings users={users}/>} />
         </Route>
       </Routes>
   );
