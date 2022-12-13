@@ -39,6 +39,20 @@ function UpdateMax(props) {
           "Authorization": `Bearer ${state.currentUserToken}`
       }})
     .catch((err) => console.log(err));
+
+    let newMaxes = [...props.userMaxes]
+
+    let replace = newMaxes.filter((max) => max.exercise_id !== exercise)
+
+    console.log(replace)
+
+    props.setUserMaxes([...replace, {
+      "user": user,
+      "exercise": exercise,
+      "weight": Math.round(weight*units),
+      "num_of_reps": reps,
+      "active": true
+    }])
   }
 
   function deactivateOldMax(currentMax) {
