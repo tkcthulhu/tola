@@ -7,15 +7,14 @@ import { API_URL } from '../services/auth.constants';
 import axios from 'axios'
 import { toast, Toaster } from 'react-hot-toast';
 import { useGlobalState } from '../context/GlobalState';
+import { useState } from 'react';
 
 function Settings(props) {
 
     let navigate = useNavigate();
     const [ state, ] = useGlobalState();
 
-    let units = props.users.units
-
-    console.log(units)
+    const [ units, setUnits ]= useState(props.users.units)
 
     const handleLogout = () => {
         AuthService
@@ -34,6 +33,7 @@ function Settings(props) {
                         "Authorization": `Bearer ${state.currentUserToken}`
                     }})
             toast(`Units have been changed to ${unit}`)
+        setUnits(unit === 'Imperial')
     }
 
     return(

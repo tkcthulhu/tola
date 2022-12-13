@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios'
 import Layout from "./Layout"
@@ -13,6 +14,7 @@ function Programs(props) {
 
     const [programs, setPrograms] = useState([])
     const [ state, ] = useGlobalState();
+    let navigate = useNavigate()
 
     useEffect(() => {
         axios.get(`${API_URL}/programs/`, {
@@ -20,7 +22,7 @@ function Programs(props) {
                 "Authorization": `Bearer ${state.currentUserToken}`
             }})
         .then((resp) => setPrograms(resp.data));
-    }, [])
+    }, [state])
 
     let my_program = ''
 
@@ -45,13 +47,14 @@ function Programs(props) {
         let payload = {
             url: `/api/updateUserProgram/${id}/`,
             method: "DELETE",
-          };
-          try {
-            await request(payload);
-              toast.success('You have left this program')
-            } catch {
-              toast.error('Failed')
+            };
+        try {
+                await request(payload);
+                toast.success('You have left this program')
+        } catch {
+                toast.error('Failed')
             }
+            navigate('/user/programs')
     }
 
     async function handleJoin(id) {
@@ -63,9 +66,10 @@ function Programs(props) {
         try {
             await request(payload);
               toast.success('You have joined this program')
-            } catch {
-              toast.error('There has been an error')
+        } catch {
+                toast.error('There has been an error')
             }
+            navigate('/user/programs')
     }
 
     if (props.users.programs.name) {
