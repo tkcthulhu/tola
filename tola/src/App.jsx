@@ -14,6 +14,7 @@ import Dashboard from './components/Dashboard';
 import Training from './components/Training';
 import Maxes from './components/Maxes/Maxes';
 import Programs from './components/Programs';
+import { CreateProgram } from './components/CreateProgram';
 import { API_URL } from './services/auth.constants';
 
 function App() {
@@ -48,7 +49,8 @@ function App() {
           <Route path="dashboard" element={<Dashboard users={users}/>} />
           <Route path="training" element={<Training users={users}/>} />
           <Route path="maxes" element={<Maxes users={users} show={show} setShow={setShow} showNewMax={showNewMax} setShowNewMax={setShowNewMax} />} />
-          <Route path="programs" element={<Programs users={users}/>} />
+          <Route path="programs" element={<Programs users={users}/>}/>
+          <Route path='newprogram' element={<CreateProgram/>}/>
           <Route path="profile" element={<Profile users={users} show={show} setShow={setShow}/>} />
           <Route path="settings" element={<Settings users={users}/>} />
         </Route>
