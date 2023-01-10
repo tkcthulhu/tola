@@ -3,6 +3,7 @@ So this is TOLA, which is the norse word meaning 'to endure', this is a React fr
 Goals for this project were to have:
 
 >users
+>
 >user authentication
 >
 >user posted maxes in various lifts
