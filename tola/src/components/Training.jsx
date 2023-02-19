@@ -201,6 +201,8 @@ function Training(props) {
                 )
             }
 
+            let week = program.sessions[0].week
+
             myTraining.push(
                 <div className="container page">
                     <div className="row">
@@ -208,7 +210,7 @@ function Training(props) {
                             <h1 className="norse-bold">{program.program}</h1>
                         </div>
                         <div className="col-3 norse-bold">
-                            <Button variant="dark">Week</Button>
+                            <Button variant="dark">Week {week}</Button>
                         </div>
                     </div>
                     <h6 className="tab">{program.coach}</h6>

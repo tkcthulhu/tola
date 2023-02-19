@@ -1,3 +1,5 @@
+import Button from 'react-bootstrap/Button'
+
 import unchecked from '../img/unchecked-box.png'
 import checked from '../img/checked-box.png'
 import Layout from './Layout';
@@ -47,6 +49,11 @@ function Dashboard(props) {
                         </div>
                         <div className="col checkbox">
                             <img className='checkbox' src={unchecked} alt="" />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col">
+                            <Button id='coach-options' className={props.users?.is_coach ? '' : 'hidden'}>Coach options</Button>
                         </div>
                     </div>
                 </li>
