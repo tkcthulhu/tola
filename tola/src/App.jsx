@@ -17,9 +17,10 @@ import Programs from './components/Programs';
 import Coach from './components/Coach';
 import CreateProgram from './components/CreateProgram';
 import EditPrograms from './components/EditPrograms';
+import EditProgramSessions from './components/EditProgramSessions';
+import NewSession from './components/NewSession';
 
 import { API_URL } from './services/auth.constants';
-import EditProgramSessions from './components/EditProgramSessions';
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -61,6 +62,7 @@ function App() {
           <Route path='newprogram' element={<CreateProgram/>}/>
           <Route path='editprograms' element={<EditPrograms selected={selected} setSelected={setSelected}/>}/>
           <Route path="editprogramsessions" element={<EditProgramSessions selected={selected} setSelected={setSelected}/>}/>
+          <Route path="newsession" element={<NewSession selected={selected} setSelected={setSelected}/>}/>
         </Route>
       </Routes>
   );
