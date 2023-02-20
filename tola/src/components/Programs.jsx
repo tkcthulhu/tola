@@ -21,7 +21,8 @@ function Programs(props) {
             "headers": {
                 "Authorization": `Bearer ${state.currentUserToken}`
             }})
-        .then((resp) => setPrograms(resp.data));
+        .then((resp) => setPrograms(resp.data))
+        .catch((error) => toast.error(error));;
     }, [state])
 
     let my_program = ''

@@ -14,11 +14,16 @@ import Dashboard from './components/Dashboard';
 import Training from './components/Training';
 import Maxes from './components/Maxes/Maxes';
 import Programs from './components/Programs';
-import { CreateProgram } from './components/CreateProgram';
+import Coach from './components/Coach';
+import CreateProgram from './components/CreateProgram';
+import EditPrograms from './components/EditPrograms';
+
 import { API_URL } from './services/auth.constants';
+import EditProgramSessions from './components/EditProgramSessions';
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [ selected, setSelected ] = useState();
   const [show, setShow] = useState(false);
   const [showNewMax, setShowNewMax] = useState(false)
 
@@ -50,9 +55,12 @@ function App() {
           <Route path="training" element={<Training users={users}/>} />
           <Route path="maxes" element={<Maxes users={users} show={show} setShow={setShow} showNewMax={showNewMax} setShowNewMax={setShowNewMax} />} />
           <Route path="programs" element={<Programs users={users}/>}/>
-          <Route path='newprogram' element={<CreateProgram/>}/>
           <Route path="profile" element={<Profile users={users} show={show} setShow={setShow}/>} />
           <Route path="settings" element={<Settings users={users}/>} />
+          <Route path="/user/coach/" element={<Coach/>}/>
+          <Route path='newprogram' element={<CreateProgram/>}/>
+          <Route path='editprograms' element={<EditPrograms selected={selected} setSelected={setSelected}/>}/>
+          <Route path="editprogramsessions" element={<EditProgramSessions selected={selected} setSelected={setSelected}/>}/>
         </Route>
       </Routes>
   );

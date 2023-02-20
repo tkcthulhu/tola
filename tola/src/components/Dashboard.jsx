@@ -1,4 +1,5 @@
 import Button from 'react-bootstrap/Button'
+import { useNavigate } from 'react-router-dom';
 
 import unchecked from '../img/unchecked-box.png'
 import checked from '../img/checked-box.png'
@@ -7,6 +8,8 @@ import Layout from './Layout';
 function Dashboard(props) {
 
     let date = new Date().toDateString();
+
+    let navigate = useNavigate();
 
     return (
         <Layout>
@@ -53,7 +56,7 @@ function Dashboard(props) {
                     </div>
                     <div className="row">
                         <div className="col">
-                            <Button id='coach-options' className={props.users?.is_coach ? '' : 'hidden'}>Coach options</Button>
+                            <Button id='coach-options' className={props.users?.is_coach ? '' : 'hidden'} onClick={() => navigate("/user/coach/")}>Coach options</Button>
                         </div>
                     </div>
                 </li>
