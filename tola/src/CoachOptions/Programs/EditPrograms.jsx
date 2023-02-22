@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import Accordion from "react-bootstrap/Accordion";
 import Button from 'react-bootstrap/Button';
 import toast, {Toaster} from 'react-hot-toast';
-import { API_URL } from '../services/auth.constants'
-import { useGlobalState } from '../context/GlobalState'
+import { API_URL } from '../../../services/auth.constants'
+import { useGlobalState } from '../../../context/GlobalState'
 import { useNavigate } from 'react-router-dom';
 
 function EditPrograms(props)

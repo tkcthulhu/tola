@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { useRef } from 'react';
-import { API_URL } from '../services/auth.constants'
+import { API_URL } from '../../../services/auth.constants'
 import toast, { Toaster } from 'react-hot-toast';
-import { useGlobalState } from '../context/GlobalState'
+import { useGlobalState } from '../../../context/GlobalState'
 
 function CreateProgram(props) {
 

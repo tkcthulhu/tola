@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useGlobalState } from "../context/GlobalState";
-import { API_URL } from "../services/auth.constants";
+import { useGlobalState } from "../../../context/GlobalState";
+import { API_URL } from "../../../services/auth.constants";
 import toast, {Toaster} from  'react-hot-toast';
 import Button from 'react-bootstrap/Button';
 

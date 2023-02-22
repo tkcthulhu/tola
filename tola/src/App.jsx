@@ -13,12 +13,12 @@ import Settings from './components/Settings';
 import Dashboard from './components/Dashboard';
 import Training from './components/Training';
 import Maxes from './components/Maxes/Maxes';
-import Programs from './components/Programs';
-import Coach from './components/Coach';
-import CreateProgram from './components/CreateProgram';
-import EditPrograms from './components/EditPrograms';
-import EditProgramSessions from './components/EditProgramSessions';
-import NewSession from './components/NewSession';
+import Programs from './components/UserPrograms';
+import Coach from './components/CoachOptions/Coach';
+import CreateProgram from './components/CoachOptions/Programs/CreateProgram';
+import EditPrograms from './components/CoachOptions/Programs/EditPrograms';
+import EditProgramSessions from './components/CoachOptions/Programs/EditProgramSessions';
+import NewSession from './components/CoachOptions/Programs/NewSession';
 
 import { API_URL } from './services/auth.constants';
 
