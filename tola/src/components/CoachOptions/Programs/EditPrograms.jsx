@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react';
 import Accordion from "react-bootstrap/Accordion";
 import Button from 'react-bootstrap/Button';
 import toast, {Toaster} from 'react-hot-toast';
-import { API_URL } from '../../../services/auth.constants'
 import { useGlobalState } from '../../../context/GlobalState'
 import { useNavigate } from 'react-router-dom';
+
+import DatabaseCall from '../../../services/api.data'
 
 function EditPrograms(props)
 {
@@ -15,13 +16,8 @@ function EditPrograms(props)
     let navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`${API_URL}/programs/`, {
-            "headers": {
-                "Authorization": `Bearer ${state.currentUserToken}`
-            }})
-        .then((resp) => setPrograms(resp.data))
-        .catch((error) => toast.error(error));;
-    }, [state])
+        DatabaseCall.GetPrograms(state)
+          .then(data => setPrograms(data))}, [])
 
     let editablePrograms = [...programs].filter((program) => program.coach === state.currentUser?.user_id);
 

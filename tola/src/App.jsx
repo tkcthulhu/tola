@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Routes, Route, useLocation } from "react-router-dom";
 
 import './App.css';
@@ -19,8 +18,7 @@ import CreateProgram from './components/CoachOptions/Programs/CreateProgram';
 import EditPrograms from './components/CoachOptions/Programs/EditPrograms';
 import EditProgramSessions from './components/CoachOptions/Programs/EditProgramSessions';
 import NewSession from './components/CoachOptions/Programs/NewSession';
-
-import { API_URL } from './services/auth.constants';
+import DatabaseCall from './services/api.data'
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -32,18 +30,9 @@ function App() {
 
   let location = useLocation();
 
-  let id = ''
-
-  if (state.currentUser) {
-    id = state.currentUser.user_id
-  } 
-
   useEffect(() => {
-    axios.get(`${API_URL}/api/usersAPI/${id}`, {
-      "headers": {
-          "Authorization": `Bearer ${state.currentUserToken}`
-      }})
-      .then((resp) => setUsers(resp.data));
+    DatabaseCall.GetUser(state)
+    .then(data => setUsers(data))
   }, [show, showNewMax, location ])
 
   return (      
