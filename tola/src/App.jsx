@@ -22,7 +22,6 @@ import DatabaseCall from './services/api.data'
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [ selected, setSelected ] = useState();
   const [show, setShow] = useState(false);
   const [showNewMax, setShowNewMax] = useState(false)
 
@@ -49,9 +48,9 @@ function App() {
           <Route path="settings" element={<Settings users={users}/>} />
           <Route path="/user/coach/" element={<Coach/>}/>
           <Route path='newprogram' element={<CreateProgram/>}/>
-          <Route path='editprograms' element={<EditPrograms selected={selected} setSelected={setSelected}/>}/>
-          <Route path="editprogramsessions" element={<EditProgramSessions selected={selected} setSelected={setSelected}/>}/>
-          <Route path="newsession" element={<NewSession selected={selected} setSelected={setSelected}/>}/>
+          <Route path='editprograms' element={<EditPrograms/>}/>
+          <Route path="editprogramsessions" element={<EditProgramSessions/>}/>
+          <Route path="newsession" element={<NewSession/>}/>
         </Route>
       </Routes>
   );

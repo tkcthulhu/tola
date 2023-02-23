@@ -23,6 +23,17 @@ function EditPrograms(props)
 
     let availible_programs = [];
 
+    function setSelectedProgram(id)
+    {
+        if(localStorage.getItem('EditProgram'))
+        {
+            localStorage.removeItem('EditProgram');
+            localStorage.setItem('EditProgram', id)
+        } else {
+            localStorage.setItem('EditProgram', id)
+        }
+    }
+
     if (editablePrograms) {
         
         for (const program of editablePrograms){
@@ -36,13 +47,13 @@ function EditPrograms(props)
                     <Accordion.Body>
                         <div className="row justify-content-center">
                             <div className="col">
-                                <Button variant="dark" onClick={() => {props.setSelected(program.id); navigate();}}><strong>EDIT PROGRAM INFO</strong></Button>
+                                <Button variant="dark" onClick={() => {setSelectedProgram(program.id); navigate();}}><strong>EDIT PROGRAM INFO</strong></Button>
                                 <br/>
                                 <br/>
-                                <Button variant="dark" onClick={() => {props.setSelected(program.id); navigate("/user/editprogramsessions"); console.log(props.selected)}}><strong>EDIT PROGRAM SESSIONS</strong></Button>
+                                <Button variant="dark" onClick={() => {setSelectedProgram(program.id); navigate("/user/editprogramsessions"); console.log(props.selected)}}><strong>EDIT PROGRAM SESSIONS</strong></Button>
                                 <br/>
                                 <br/>
-                                <Button variant="dark" onClick={() => {props.setSelected(program.id); navigate();}}><strong>EDIT PROGRAM ATHLETES</strong></Button>
+                                <Button variant="dark" onClick={() => {setSelectedProgram(program.id); navigate();}}><strong>EDIT PROGRAM ATHLETES</strong></Button>
                             </div>
                         </div>
                     </Accordion.Body>

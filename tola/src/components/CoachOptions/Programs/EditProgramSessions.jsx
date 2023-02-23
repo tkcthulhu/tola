@@ -13,7 +13,7 @@ function EditProgramSessions(props)
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`${API_URL}/programs/${props.selected}`, {
+        axios.get(`${API_URL}/programs/${localStorage.getItem('EditProgram')}`, {
             "headers": {
                 "Authorization": `Bearer ${state.currentUserToken}`
             }})
@@ -33,7 +33,6 @@ function EditProgramSessions(props)
 
         if ((program.sessions).length > 0)
         {
-            console.log("here")
             numOfSessions = (program.sessions).length;
         } else {
             existingSessions = "Let's add some sessions to your program!"

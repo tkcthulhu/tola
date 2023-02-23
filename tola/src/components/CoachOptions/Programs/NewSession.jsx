@@ -10,13 +10,13 @@ import Button from 'react-bootstrap/esm/Button';
 
 function NewSession(props) {
 
-    const [response, setResponse] = useState();
-    const [exercises, setExercises] = useState()
+    const [program, setProgram] = useState();
+    const [exercises, setExercises] = useState();
     const [sessionExercises, setSessionExercises ] = useState([]);
 
-    const [ counter, setCounter ] = useState(1);
+    const [counter, setCounter] = useState(1);
     
-    const [ state, ] = useGlobalState();
+    const [state, ] = useGlobalState();
 
     const [modalShow, setModalShow] = useState(false);
 
@@ -25,6 +25,10 @@ function NewSession(props) {
     useEffect(() => {
       DatabaseCall.GetExercises(state)
         .then(data => setExercises(data))}, [])
+
+    useEffect(() => {
+      DatabaseCall.GetProgram(state, localStorage.getItem('EditProgram'))
+        .then(data => setProgram(data))}, [])
 
     function exerciseList()
     {
@@ -88,6 +92,7 @@ function NewSession(props) {
       <div className="container">
         <div className="row">
           <div className="col">
+            <h1>{program?.name}</h1>
             {listExercises()}
             <select 
               name="exercise" 

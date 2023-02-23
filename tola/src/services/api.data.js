@@ -42,6 +42,19 @@ class DatabaseCall
                 return response
             });    
     }
+
+    async GetProgram(state, id)
+    {
+        return await
+            axios.get(`${API_URL}/programs/${id}`, {
+                "headers": {
+                    "Authorization": `Bearer ${state.currentUserToken}`
+                }})
+                .then((resp) => {
+                    const response=resp.data
+                    return response
+                }); 
+    }
 }
 
 export default new DatabaseCall
