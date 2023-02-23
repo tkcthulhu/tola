@@ -3,6 +3,8 @@ import toast, {Toaster} from "react-hot-toast";
 import axios from 'axios';
 import { API_URL } from '../../../services/auth.constants';
 import { useGlobalState } from '../../../context/GlobalState';
+
+import NewExerciseModal from './NewExercise';
  
 import Button from 'react-bootstrap/esm/Button';
 
@@ -14,8 +16,9 @@ function NewSession(props) {
     
     const [ state, ] = useGlobalState();
 
+    const [modalShow, setModalShow] = useState(false);
+
     const exerciseSelect = useRef(null);
-    const newExerciseName = useRef(null);
 
     function addExercise()
     {
@@ -23,22 +26,6 @@ function NewSession(props) {
 
         setExercises([...exercises, <p>Exercise {counter}</p>])
     }
-
-    function newExercise(name) {
-      axios
-          .post(`${API_URL}/exercises/`, {
-              "name": name,
-          }, 
-          {
-              "headers": {
-                  "Authorization": `Bearer ${state.currentUserToken}`
-              }
-          })
-
-          newExerciseName.current.value = ''
-          toast.success(`Exercise ${name} is now availible!`)
-
-  }
 
     return(
       <div className="container">
@@ -50,11 +37,16 @@ function NewSession(props) {
           <div className="row">
             <div className="col">
               <p>Don't see your exericse listed?</p>
-              <Button>Add New Exercise</Button>
+              <Button onClick={() => setModalShow(true)}>Add New Exercise</Button>
             </div>
           </div>
         </div>
         <Toaster/>
+        <NewExerciseModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          toast={toast}
+        />
       </div>
     )
 
