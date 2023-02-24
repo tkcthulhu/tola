@@ -5,6 +5,7 @@ import { useGlobalState } from '../../../context/GlobalState';
 import DatabaseCall from '../../../services/api.data'
 
 import NewExerciseModal from './NewExercise';
+import NewSetModal from './NewSet';
  
 import Button from 'react-bootstrap/esm/Button';
 
@@ -13,12 +14,14 @@ function NewSession(props) {
     const [program, setProgram] = useState();
     const [exercises, setExercises] = useState();
     const [sessionExercises, setSessionExercises ] = useState([]);
+    const [selected, setSelected] = useState();
 
     const [counter, setCounter] = useState(1);
     
     const [state, ] = useGlobalState();
 
-    const [modalShow, setModalShow] = useState(false);
+    const [exerciseModalShow, setExerciseModalShow] = useState(false);
+    const [addSetModal, setAddSetModal] = useState(false);
 
     const exerciseSelect = useRef(null);
 
@@ -66,8 +69,17 @@ function NewSession(props) {
             order: counter,
             sets: []
           }])
+    }
 
-        console.log(sessionExercises)
+    function addSet(selected)
+    {
+      let thisExercise = [...sessionExercises].filter(item => item.id === selected)
+
+      let session = [...sessionExercises].filter(item => item.id !== selected)
+
+      console.log(thisExercise)
+
+      console.log(session)
     }
 
     function listExercises()
@@ -79,8 +91,8 @@ function NewSession(props) {
       items.map(item => itemsList.push(
         <p>
           {item.name} {item.order}
-        <Button>
-        Add Sets
+        <Button onClick={() => {setSelected(item.id); setAddSetModal(true)}}>
+        Add Set
         </Button>
         </p>
       ))
@@ -106,15 +118,23 @@ function NewSession(props) {
           <div className="row">
             <div className="col">
               <p>Don't see your exericse listed?</p>
-              <Button onClick={() => setModalShow(true)}>Add New Exercise</Button>
+              <Button onClick={() => setExerciseModalShow(true)}>Add New Exercise</Button>
             </div>
           </div>
         </div>
         <Toaster/>
         <NewExerciseModal
-          show={modalShow}
-          onHide={() => setModalShow(false)}
+          show={exerciseModalShow}
+          onHide={() => setExerciseModalShow(false)}
           toast={toast}
+        />
+        <NewSetModal
+          show={addSetModal}
+          onHide={() => setAddSetModal(false)}
+          sessionExercises={sessionExercises}
+          setSessionExercises={setSessionExercises}
+          selected={selected}
+          setSelected={setSelected}
         />
       </div>
     )
