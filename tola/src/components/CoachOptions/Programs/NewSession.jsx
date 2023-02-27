@@ -71,15 +71,13 @@ function NewSession(props) {
           }])
     }
 
-    function addSet(selected)
+    function listSets(exerciseSets)
     {
-      let thisExercise = [...sessionExercises].filter(item => item.id === selected)
-
-      let session = [...sessionExercises].filter(item => item.id !== selected)
-
-      console.log(thisExercise)
-
-      console.log(session)
+      let setsList = []
+      exerciseSets.map(set => setsList.push(
+        <p>{set.set_num}: {set.percent}% {set.num_of_reps} reps</p>
+      ))
+      return setsList
     }
 
     function listExercises()
@@ -90,7 +88,10 @@ function NewSession(props) {
 
       items.map(item => itemsList.push(
         <p>
-          {item.name} {item.order}
+          Exercise {item.order}<br/>
+          {item.name}
+          {listSets(item.sets)}
+          <br/>
         <Button onClick={() => {setSelected(item.id); setAddSetModal(true)}}>
         Add Set
         </Button>
