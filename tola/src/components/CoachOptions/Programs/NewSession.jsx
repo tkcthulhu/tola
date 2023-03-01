@@ -3,11 +3,13 @@ import toast, {Toaster} from "react-hot-toast";
 import { API_URL } from '../../../services/auth.constants';
 import { useGlobalState } from '../../../context/GlobalState';
 import DatabaseCall from '../../../services/api.data'
+import request from '../../../services/api.request'
 
 import NewExerciseModal from './NewExercise';
 import NewSetModal from './NewSet';
  
 import Button from 'react-bootstrap/esm/Button';
+import axios from 'axios';
 
 function NewSession(props) {
 
@@ -15,6 +17,7 @@ function NewSession(props) {
     const [exercises, setExercises] = useState();
     const [sessionExercises, setSessionExercises ] = useState([]);
     const [selected, setSelected] = useState();
+    const [sessions, setSessions] = useState();
 
     const [counter, setCounter] = useState(1);
     
@@ -24,6 +27,7 @@ function NewSession(props) {
     const [addSetModal, setAddSetModal] = useState(false);
 
     const exerciseSelect = useRef(null);
+    const week = useRef(null)
 
     useEffect(() => {
       DatabaseCall.GetExercises(state)
@@ -32,6 +36,28 @@ function NewSession(props) {
     useEffect(() => {
       DatabaseCall.GetProgram(state, localStorage.getItem('EditProgram'))
         .then(data => setProgram(data))}, [])
+
+    useEffect(() => {
+      DatabaseCall.GetProgramSessions(state, localStorage.getItem('EditProgram'))
+        .then(data => setSessions(data))}, [])
+
+    let currentSession
+
+    if (sessions) {
+      currentSession = sessions.length + 1;
+    } else {
+      currentSession = 1;
+    }
+
+    useEffect(() => {
+      if(localStorage.getItem('EditSession'))
+      {
+        setSessionExercises(JSON.parse(localStorage.getItem('EditSession')))
+      }
+    }, [])
+
+
+    console.log(sessionExercises)
 
     function exerciseList()
     {
@@ -67,6 +93,7 @@ function NewSession(props) {
             id: exercise.id,
             name: exercise.name,
             order: counter,
+            max_exercise: exercise.id,
             sets: []
           }])
     }
@@ -101,11 +128,33 @@ function NewSession(props) {
       return itemsList
     }
 
+    async function createSession()
+    {
+      let payload = {
+        url: `/api/addNewSession/${localStorage.getItem('EditProgram')}/`,
+        method: "POST",
+        data: {
+          "session": currentSession,
+          "week": week.current.value,
+          "exercises": [...sessionExercises]
+        }
+      };
+      try {
+        await request(payload);
+          toast.success('Session has been added successfully')
+        } catch {
+          toast.error('Failed')
+        }
+    }
+
     return(
       <div className="container">
         <div className="row">
           <div className="col">
             <h1>{program?.name}</h1>
+            <h3>Session {currentSession}</h3>
+            <h4>Week: </h4>
+            <input type="number" ref={week}/>
             {listExercises()}
             <select 
               name="exercise" 
@@ -120,6 +169,11 @@ function NewSession(props) {
             <div className="col">
               <p>Don't see your exericse listed?</p>
               <Button onClick={() => setExerciseModalShow(true)}>Add New Exercise</Button>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <Button onClick={() => createSession()}>Create Session</Button>
             </div>
           </div>
         </div>

@@ -7,7 +7,7 @@ class DatabaseCall
     async GetUser(state)
     {
         return await
-            axios.get(`${API_URL}/api/usersAPI/${state?.currentUser.user_id}`, {
+            axios.get(`${API_URL}/api/usersAPI/${state?.currentUser?.user_id}`, {
             "headers": {
                 "Authorization": `Bearer ${state.currentUserToken}`
             }})
@@ -54,6 +54,19 @@ class DatabaseCall
                     const response=resp.data
                     return response
                 }); 
+    }
+
+    async GetProgramSessions(state, id)
+    {
+        return await
+        axios.get(`${API_URL}/getProgramSessions/${id}`, {
+            "headers": {
+                "Authorization": `Bearer ${state.currentUserToken}`
+            }})
+            .then((resp) => {
+                const response=resp.data
+                return response
+            }); 
     }
 }
 

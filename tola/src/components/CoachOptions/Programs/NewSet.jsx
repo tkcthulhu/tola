@@ -17,17 +17,9 @@ function NewSetModal(props) {
     let setReps = useRef(null);
     let setCount = useRef(null);
 
-    console.log(props.selected)
-
     function addSet(selected, order, percent, reps, sets)
     {
       let thisExercise = [...props.sessionExercises].filter(item => item.id === selected)
-
-      let session = [...props.sessionExercises].filter(item => item.id !== selected)
-
-      let existingSets = (thisExercise[0].sets).length
-
-      console.log(thisExercise)
 
       for (let i=0; i<sets; i++)
       {
@@ -40,7 +32,18 @@ function NewSetModal(props) {
         )
       }
 
-      console.log(thisExercise)
+      saveSession(props.sessionExercises)
+    }
+
+    function saveSession(sessionExercises)
+    {
+        if(localStorage.getItem('EditSession'))
+        {
+            localStorage.removeItem('EditSession');
+            localStorage.setItem('EditSession', JSON.stringify([...sessionExercises]))
+        } else {
+            localStorage.setItem('EditSession', JSON.stringify([...sessionExercises]))
+        }
     }
 
     function clearForm(currentSet)

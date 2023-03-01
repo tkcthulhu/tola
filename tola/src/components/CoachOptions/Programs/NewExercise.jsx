@@ -17,12 +17,12 @@ function NewExerciseModal(props) {
     function newExercise(name) {
         axios
             .post(`${API_URL}/api/exerciseAPI/`, {
-                "name": name,
+              "name": name,
             }, 
             {
-                "headers": {
-                    "Authorization": `Bearer ${state.currentUserToken}`
-                }
+              "headers": {
+                  "Authorization": `Bearer ${state.currentUserToken}`
+              }
             })
   
             newExerciseName.current.value = ''
